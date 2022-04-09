@@ -25,7 +25,7 @@ function App() {
   });
   return (
     <>
-      <Navbar toggle={toggle} />
+      <Navbar toggle={toggle}/>
       <Dropdown isOpen={isOpen} toggle={toggle} />
       <Routes>
       <Route path="/" element={<Home/>}/>

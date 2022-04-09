@@ -1,11 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from 'react-router-dom'
+
 const Navbar = ({toggle}) => {
+  const location = useLocation();
   return (
-    <nav className="flex justify-between items-center h-16 bg-white text-black relative shadow-sm font-prompt  " role='navigation'>
+    // white navbar - home ,buy , store
+    <nav className={`flex justify-between items-center h-16 ${location.pathname === "/" ? "bg-white shadow-sm ":"bg-[#FFE5A3] " }  text-black relative font-prompt `} role='navigation'>
       <Link to="/" className="pl-8 text-[#E54E3D]">
         Lottery
       </Link>
+      <p>{location.pathname }</p>
       <div className="px-4 cusor-ponter md:hidden" onClick={toggle}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
