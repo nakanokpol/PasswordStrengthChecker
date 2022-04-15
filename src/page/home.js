@@ -1,9 +1,14 @@
 import React from "react";
-
+import CardTemplate from "./components/card"
 function Home() {
   return (
-    <div className="h-screen flex justify-center items-center bg-white">
-      <h1 className="text-9xl uppercase font-black">Home</h1>
+    <div className="h-screen flex justify-evenly items-center bg-white" style={{marginLeft: "2%",marginRight: "2%"}}>
+      <CardTemplate/>
+      <CardTemplate/>
+      <CardTemplate/>
+      <CardTemplate/>
+      <CardTemplate/>
+      
     </div>
   );
 }
