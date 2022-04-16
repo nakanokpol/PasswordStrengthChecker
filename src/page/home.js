@@ -1,8 +1,7 @@
 import React from "react";
 import SingleCardTemplate from "./components/singleCard"
 import PackedCardTemplate from "./components/packedCard"
-import SingleCardTemplateTest from "./components/singleCardTemplateTest"
-import PackedCardTemplateTest from "./components/packedCardTemplateTest"
+import FormComponent from "./components/formComponent";
 
 const li_data = [
   {Number:"000000", DrawDate:"1 เมษายน 2565", Draw: "20", Storename: "สำรีขายหวย", pack:"N"},
@@ -23,15 +22,20 @@ const li_data = [
 
 function Home() {
   return (
-    <div className="h-screen bg-white" style={{margin:"2% 5% 5% 5%"}}>
-      <div className="h-screen grid grid-cols-1 2xl:grid-cols-5 xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 justify-items-center" style={{gridTemplateRows: "repeat(auto-fill, 11.5VW)"}}>
-        {li_data.map((element)=>{
-          if (element.pack==="N") {
-            return <SingleCardTemplate Number={element.Number} DrawDate={element.DrawDate} Draw={element.Draw} Storename={element.Storename}/>
-          }else{
-            return <PackedCardTemplate Number={element.Number} DrawDate={element.DrawDate} Draw={element.Draw} Storename={element.Storename}/>
-          }
-        })}
+    <div>
+      <div>
+        <FormComponent/>
+      </div>
+      <div className="h-screen bg-white" style={{margin:"2% 5% 5% 5%"}}>
+        <div className="h-screen grid grid-cols-1 2xl:grid-cols-5 xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 justify-items-center" style={{gridTemplateRows: "repeat(auto-fill, 11.5VW)"}}>
+          {li_data.map((element)=>{
+            if (element.pack==="N") {
+              return <SingleCardTemplate Number={element.Number} DrawDate={element.DrawDate} Draw={element.Draw} Storename={element.Storename}/>
+            }else{
+              return <PackedCardTemplate Number={element.Number} DrawDate={element.DrawDate} Draw={element.Draw} Storename={element.Storename}/>
+            }
+          })}
+        </div>
       </div>
     </div>
   );
