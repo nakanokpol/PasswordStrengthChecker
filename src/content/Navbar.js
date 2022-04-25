@@ -6,7 +6,8 @@ const Navbar = ({toggle}) => {
   const location = useLocation();
   return (
     // white navbar - home ,buy , store
-    <nav className={`flex justify-between items-center h-16 ${location.pathname === "/" ? "bg-white shadow-sm ":"bg-[#FFE5A3] " }  text-black relative font-prompt `} role='navigation'>
+    // <nav className={`flex justify-between items-center h-16 ${location.pathname === "/" ? "bg-white shadow-sm ":"bg-[#FFE5A3] " }  text-black relative font-prompt `} role='navigation'>
+    <nav className={`flex justify-between items-center h-16 ${location.pathname === "/" ? "bg-white shadow-sm ":location.pathname === "/account"?"bg-white shadow-sm": location.pathname === "/singlelotteryinfo"?"bg-white shadow-sm":location.pathname === "/packlotteryinfo"?"bg-white shadow-sm": "bg-[#FFE5A3] " }  text-black relative font-prompt `} role='navigation'>
       <Link to="/" className="pl-8 text-[#E54E3D]">
         Lottery
       </Link>      
