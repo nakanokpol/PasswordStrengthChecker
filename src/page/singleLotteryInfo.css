@@ -1,0 +1,26 @@
+.sendSetNumber{
+  display: inline-block;
+  vertical-align: top;
+  height: 3vw;
+  width: 24.5vw;
+  border-radius: 0.2vw;
+  border: 0.2vw solid #E54E3D;
+  background-color: #E54E3D;
+  text-align: center;
+  font-size: 1.2vw;
+  font-weight: 300;
+  color:#ffffff;
+}
+.sendSetNumber[disabled]{
+  display: inline-block;
+  vertical-align: top;
+  height: 3vw;
+  width: 24.5vw;
+  border-radius: 0.2vw;
+  border: 0.2vw solid #E1E1E1;
+  background-color: #E1E1E1;
+  text-align: center;
+  font-size: 1.2vw;
+  font-weight: 300;
+  color:#ffffff;
+}

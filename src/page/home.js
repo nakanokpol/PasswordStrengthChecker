@@ -8,6 +8,7 @@ import axios from "axios";
 
 function Home(props) {
   const {li_dataToshow} = props // li_data is default data to show on Home
+  console.log("home li_dataToshow ",li_dataToshow)
   const [resultFor,setResultFor] = useState("------")
   const search_number = (searchNum)=>{
     console.log("formC => Home:",searchNum)

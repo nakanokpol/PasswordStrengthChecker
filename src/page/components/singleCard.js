@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 const SingleCardTemplate = (card_props)=>{
     console.log("nowABC", card_props)
     return (
