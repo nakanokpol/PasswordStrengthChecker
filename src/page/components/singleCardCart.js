@@ -1,7 +1,7 @@
 import React from "react";
 
 const SingleCardTemplateCart = (card_props)=>{
-    console.log("now51516", card_props)
+    console.log("SingleCardTemplateCart ", card_props)
     return (
         <div className="font-prompt" style={{height: "8.5VW", width: "17VW"}}>
             <div className="bg-white items-center" style={{height: "7.9VW", width: "17VW", borderWidth:"0.01VW", boxShadow:"0px 0px 7px 0px #B8D4D4"}}>
@@ -24,7 +24,7 @@ const SingleCardTemplateCart = (card_props)=>{
                     <h1 className="text-left font-normal" style={{fontSize: "0.55VW"}}>-</h1>
                 </div>
                 <div style={{marginLeft: "6.545VW", marginTop: "-5.89VW",height: "1.482VW", width: "8.5VW"}}>
-                    <h1 className="text-center font-normal" style={{fontSize: "1.2VW", letterSpacing:"0.35VW"}}>{card_props.cardInfo.Number}</h1>
+                    <h1 className="text-center font-normal" style={{fontSize: "1.2VW", letterSpacing:"0.35VW"}}>{card_props.cardInfo.Number_lottery}</h1>
                 </div>
                 <div style={{marginLeft: "6.545VW", marginTop: "0.9VW",height: "1.482VW", width: "8.5VW"}}>
                     <h1 className="text-center font-light" style={{fontSize: "0.8VW"}}>{card_props.cardInfo.DrawDate}</h1>

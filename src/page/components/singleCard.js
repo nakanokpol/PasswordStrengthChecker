@@ -37,7 +37,7 @@ const SingleCardTemplate = (card_props)=>{
                 <div style={{marginTop: "0.3798VW", height: "1.1394VW", width: "4.3822VW",borderRadius: "1VW", backgroundColor:"#D3FAFA"}}>
                     <h1 className="text-center" style={{fontSize: "0.7VW"}}>สลากเดี่ยว</h1>
                 </div>
-                    <Link to="/">
+                    <Link to="/store">
                         <div style={{marginTop: "0.3VW", height: "1.5VW", width: "11VW"}}>
                             <h1 className="text-left" style={{fontSize: "0.9VW"}}>{card_props.cardInfo.Storename}</h1>
                         </div>

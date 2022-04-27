@@ -3,6 +3,8 @@ import axios from "axios";
 import PackedCardTemplateInfo from "./components/packedCardInfo";
 import { useLocation, Link, Routes, Route } from "react-router-dom";
 import './packLotteryInfo.css'
+const url_ = 'http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io'
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMDcwMTYxLCJleHAiOjE2NTEwODA5NjF9.KmKrjDS012ivBmVFJ2_Bohs2SkcedVaXKq-V_kMJm-A'
 
 function PackLotteryInfo(props) {
   const cardInfo = useLocation()
@@ -39,23 +41,24 @@ function PackLotteryInfo(props) {
     console.log("selectSet_2, selectSet_3, selectSet_5 : ",selectSet_2, selectSet_3, selectSet_5)
   }
 
-  const sendSelectItemToCart = (item)=>{
-    console.log("sendPackItemToCart : Succuss", item)/////////////////////////////////////////////
-    axios.post('http://bf6c-2403-6200-88a4-54b-70f6-c834-414a-daa1.ngrok.io/getSearch', 
-    {token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUwOTY1ODA1LCJleHAiOjE2NTA5Njk0MDV9.7MBSCD88VkHxkNe2c4kdczsVdSzgDZkxzpn9wwQOTco",
+  const sendSelectItemToCart =(event)=>{
+    event.preventDefault()
+    const item = cardInfoState.cardInfo
+    axios.post(url_+'/cart', 
+    {token: token,
      Number_lottery: item.Number,
      Amount:item.Stock,
      Storename: item.Storename,
      Pack_Flag:item.pack,
      PackAmount:item.Amount})
     .then(function (response) {
-      console.log("check Packaddtocart",{
+      console.log("check Singleaddtocart",{
         Number_lottery: item.Number,
         Amount:item.Stock,
         Storename: item.Storename,
         Pack_Flag:item.pack,
-        PackAmount:item.Amount})
-      // setData(response.data.search_lottery)
+        PackAmount:item.Amount
+      })
     })
     .catch(function (error) {
       console.log(error);
@@ -93,12 +96,10 @@ function PackLotteryInfo(props) {
                     <p>5 ใบ</p>
                 </button>
               </div>
-              <div style={{marginTop: "2.5VW"}}>
-                <Link to="/" className={!hasSomethingSelected === true ? "disableLink" : "enableLink"}>
-                  <button id="sendSetNumber" className="flex sendSetNumber" disabled={!hasSomethingSelected} onClick={sendSelectItemToCart(cardInfoState.cardInfo)}>
-                    <p>เพิ่มลงตะกร้า</p>
+              <div className = "justify-items-center flex" style={{marginLeft: "0VW",marginTop: "0VW"}}>
+                  <button disabled={!hasSomethingSelected} className="flex sendSetNumber" style={{marginTop: "2.5VW"}} onClick={sendSelectItemToCart}>
+                      <p>เพิ่มลงตะกร้า</p>
                   </button>
-                </Link>
               </div>
             </form>
           </div>

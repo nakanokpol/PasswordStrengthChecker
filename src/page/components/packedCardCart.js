@@ -2,8 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 const PackedCardTemplateCart = (card_props)=>{
-    console.log("check card console", card_props)
-
+    console.log("PackedCardTemplateCart", card_props)
 
     return (
         <div className="font-prompt" style={{height: "8.5VW", width: "17VW"}}>
@@ -27,7 +26,7 @@ const PackedCardTemplateCart = (card_props)=>{
                     <h1 className="text-left font-normal" style={{fontSize: "0.55VW"}}>-</h1>
                 </div>
                 <div style={{marginLeft: "6.545VW", marginTop: "-5.89VW",height: "1.482VW", width: "8.5VW"}}>
-                    <h1 className="text-center font-normal" style={{fontSize: "1.2VW", letterSpacing:"0.35VW"}}>{card_props.cardInfo.Number}</h1>
+                    <h1 className="text-center font-normal" style={{fontSize: "1.2VW", letterSpacing:"0.35VW"}}>{card_props.cardInfo.Number_lottery}</h1>
                 </div>
                 <div style={{marginLeft: "6.545VW", marginTop: "0.9VW",height: "1.482VW", width: "8.5VW"}}>
                     <h1 className="text-center font-light" style={{fontSize: "0.8VW"}}>{card_props.cardInfo.DrawDate}</h1>

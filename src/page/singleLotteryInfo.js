@@ -1,31 +1,37 @@
 import React, { useState } from "react";
 import axios from "axios";
 import SingleCardTemplateInfo from "./components/singleCardInfo"
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link  } from "react-router-dom";
 import './singleLotteryInfo.css'
+const url_ = 'http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io'
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMDcwMTYxLCJleHAiOjE2NTEwODA5NjF9.KmKrjDS012ivBmVFJ2_Bohs2SkcedVaXKq-V_kMJm-A'
 
 function SingleLotteryInfo(props) {
   const cardInfo = useLocation()
   const cardInfoState = cardInfo.state
+  const [amountLeft,setAmountLeft] = useState(cardInfoState.cardInfo.Stock)
 
-  const sendSelectItemToCart = (item)=>{
-    console.log("sendSelectItemToCart : Succuss", item)/////////////////////////////////////////////
-    axios.post('http://bf6c-2403-6200-88a4-54b-70f6-c834-414a-daa1.ngrok.io/getSearch', 
-    {token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUwOTY1ODA1LCJleHAiOjE2NTA5Njk0MDV9.7MBSCD88VkHxkNe2c4kdczsVdSzgDZkxzpn9wwQOTco",
+  console.log("cardInfoState",cardInfoState)
+
+  const sendSelectItemToCart =(event)=>{
+    event.preventDefault()
+    setAmountLeft(amountLeft-1)
+    const item = cardInfoState.cardInfo
+    axios.post(url_+'/cart', 
+    {token: token,
      Number_lottery: item.Number,
      Amount:item.Stock,
      Storename: item.Storename,
      Pack_Flag:item.pack,
      PackAmount:"-"})
     .then(function (response) {
-      // console.log("check singleaddtocart",{
-      //   Number_lottery: item.Number,
-      //   Amount:item.Stock,
-      //   Storename: item.Storename,
-      //   Pack_Flag:item.pack,
-      //   PackAmount:"-"
-      // })
-      // setData(response.data.search_lottery)
+      console.log("check Singleaddtocart",{
+        Number_lottery: item.Number,
+        Amount:item.Stock,
+        Storename: item.Storename,
+        Pack_Flag:item.pack,
+        PackAmount:"-"
+      })
     })
     .catch(function (error) {
       console.log(error);
@@ -46,14 +52,14 @@ function SingleLotteryInfo(props) {
           <p className=" font-light" style={{marginTop: "0VW", marginLeft: "7VW", fontSize: "1.2VW"}}>งวดวันที่: {cardInfoState.cardInfo.DrawDate}</p>
           <p className=" font-light" style={{marginTop: "0VW", marginLeft: "7VW", fontSize: "1.2VW"}}>งวดที่: {cardInfoState.cardInfo.Draw}</p>
           <p className=" font-light" style={{marginTop: "1.5VW", marginLeft: "7VW", fontSize: "1.2VW"}}>ร้าน: {cardInfoState.cardInfo.Storename}</p>
-          <div className = "justify-items-center flex" style={{marginLeft: "7VW",marginTop: "2.2VW"}}>
-            <form>
-              <Link to="/">
-                  <button id="sendSetNumber" className="flex sendSetNumber" style={{marginTop: "2.5VW"}} onClick={sendSelectItemToCart(cardInfoState.cardInfo)}>
-                      <p>เพิ่มลงตะกร้า</p>
-                  </button>
-              </Link>
-            </form>
+          <p className=" font-light flex" id={amountLeft===0?"isred":""} style={{marginTop: "3.1VW", marginRight: "11.5VW", fontSize: "1VW",justifyContent:"right"}}>จำนวนสินค้าคงเหลือในร้าน: {amountLeft}</p>
+          <div className = "justify-items-center flex" style={{marginLeft: "7VW",marginTop: "0VW"}}>
+            {/* <Link to="/"> */}
+            
+            <button id="sendSetNumber" className="flex sendSetNumber" disabled={amountLeft===0} style={{marginTop: "0VW"}} onClick={sendSelectItemToCart}>
+                <p>เพิ่มลงตะกร้า</p>
+            </button>
+            {/* </Link> */}
           </div>
       </div>
     </div>

@@ -1,0 +1,64 @@
+
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+.custom-file-input::before {
+content: 'อัพโหลดสลิป';
+display: inline-block;
+background: linear-gradient(top, #f9f9f9, #e3e3e3);
+border: 1px solid #999191;
+border-radius: 3px;
+padding: 0.4vw 1vw;
+outline: none;
+white-space: nowrap;
+-webkit-user-select: none;
+cursor: pointer;
+text-shadow: 1px 1px #fff;
+font-weight: 600;
+font-size: 1.2rem;
+}
+.custom-file-input:hover::before {
+border-color: black;
+}
+.custom-file-input:active::before {
+background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.goToPaymentMethod{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 1vw;
+    margin-bottom: 0.5vw;
+    height: 3vw;
+    width: 100%;
+    border-radius: 0.2vw;
+    border: 0.2vw solid #E54E3D;
+    background-color: #E54E3D;
+    text-align: center;
+    font-size: 1.2vw;
+    font-weight: 500;
+    color:#ffffff;
+}
+.goToPaymentMethod[disabled]{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 1vw;
+    margin-bottom: 0.5vw;
+    height: 3vw;
+    width: 100%;
+    border-radius: 0.2vw;
+    border: 0.2vw solid #E1E1E1;
+    background-color: #E1E1E1;
+    text-align: center;
+    font-size: 1.2vw;
+    font-weight: 500;
+    color:#ffffff;
+}
+.disableLink { 
+    cursor: not-allowed;
+    pointer-events: none !important;
+}
+.enableLink { 
+    cursor: pointer;
+    pointer-events: all !important;
+}
