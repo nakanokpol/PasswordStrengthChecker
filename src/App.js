@@ -3,7 +3,6 @@ import "./App.css";
 import Dropdown from "./content/Dropdown";
 import Navbar from "./content/Navbar";
 import {Routes,Route}from"react-router-dom";
-import Account from "./page/account";
 import Home from "./page/home";
 import SingleLotteryInfo from "./page/singleLotteryInfo";
 import PackLotteryInfo from "./page/packLotteryInfo";
@@ -11,9 +10,17 @@ import axios from "axios";
 import Cart from "./page/cart";
 import Payment from "./page/payment";
 import Store from "./page/store";
+import SlipPayment from "./page/slipSuccess";
+import OrderID_API from "./page/components/orderID_API";
+import Account from "./page/account";
+import Account_merchant from "./page/account_merchant";
+import Account_admin from "./page/account_admin";
+import Random from "./page/random";
+import LogIn from "./page/logIn";
+import Register from "./page/register";
 
-const url_ = 'http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io'
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMDcwMTYxLCJleHAiOjE2NTEwODA5NjF9.KmKrjDS012ivBmVFJ2_Bohs2SkcedVaXKq-V_kMJm-A'
+const url_ = 'http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io'
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMDk1MDY5LCJleHAiOjE2NTExMDU4Njl9.zZTFWwlN6yIPsi6UAETNHnsminyO6h4jjsazH4j0fa4'
 
 function App() {
   const li_default_data = []
@@ -35,9 +42,8 @@ function App() {
   //   {Number:"151512", DrawDate:"1 เมษายน 2565", Draw: "13", Storename: "หวยชี้ฟ้า", pack:"N"}
   // ]
   const [data_toShow, setData] = useState(li_default_data)
-  // const [firstTimeSingleGet, setFirstTimeSingleGet] = useState([])
-  // const [firstTimePackGet, setFirstTimePackGet] = useState([])
   const [checkFirstGet, setCheckGet] = useState(true)
+  const [orderID_Global, setOrderID_Global] = useState("")
 
   useEffect((event)=>{
     if(checkFirstGet === true){
@@ -83,18 +89,32 @@ function App() {
       window.removeEventListener("resize", hideMenu);
     };
   });
+
+  const getOrderID = (item) =>{
+    setOrderID_Global(item)
+  }
+
+  // const sampleLink = <Link to="/paymentmethod" state={{}}></Link>
+
   return (
     <>
       <Navbar toggle={toggle}/>
       <Dropdown isOpen={isOpen} toggle={toggle} />
       <Routes>
         <Route path="/" element={<Home li_dataToshow={data_toShow} searchNumApp={sendSearchNumberToBase}/>}/>
-        <Route path="/account"  element={<Account/>}/>
+        {/* <Route path="/account"  element={<Account/>}/> */}
+        <Route path="/account" element={<Account_admin/>} />
+        <Route path="/accountmerchant" element={<Account_merchant/>} />
         <Route path="/singlelotteryinfo"  element={<SingleLotteryInfo/>}/>
         <Route path="/packlotteryinfo"  element={<PackLotteryInfo/>}/>
-        <Route path="/cart"  element={<Cart/>}/>
-        <Route path="/paymentmethod"  element={<Payment/>}/>
+        <Route path="/cart"  element={<Cart order_ID = {getOrderID}/>}/>
+        <Route path="/paymentmethod" element={ <OrderID_API.Provider value = {orderID_Global}><Payment /></OrderID_API.Provider>}/>
         <Route path="/store"  element={<Store/>}/>
+        <Route path="/paymentsuccess"  element={<SlipPayment/>}/>
+        <Route path="/random"  element={<Random/>}/>
+        <Route path="/login"  element={<LogIn/>}/>
+        <Route path="/register"  element={<Register/>}/>
+        
       </Routes>
     </>
   );

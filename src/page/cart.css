@@ -26,6 +26,14 @@
     font-weight: 500;
     color:#ffffff;
 }
+.pol{
+    color:"#ff00ff"
+}
+
+.poly{
+    color:"#00ff00"
+}
+
 .disableLink { 
     cursor: not-allowed;
     pointer-events: none !important;

@@ -6,12 +6,11 @@ const Navbar = ({toggle}) => {
   const location = useLocation();
   return (
     // white navbar - home ,buy , store
-    // <nav className={`flex justify-between items-center h-16 ${location.pathname === "/" ? "bg-white shadow-sm ":"bg-[#FFE5A3] " }  text-black relative font-prompt `} role='navigation'>
-    <nav className={`flex justify-between items-center h-16 ${location.pathname === "/" ? "bg-white shadow-sm ":location.pathname === "/account"?"bg-white shadow-sm": location.pathname === "/singlelotteryinfo"?"bg-white shadow-sm":location.pathname === "/packlotteryinfo"?"bg-white shadow-sm": "bg-[#FFE5A3] " }  text-black relative font-prompt `} role='navigation'>
-      <Link to="/" className="pl-8 text-[#E54E3D]">
+    <nav class={`flex justify-between items-center h-16 ${location.pathname === "/" ? "bg-white shadow-sm ":"bg-[#FFE5A3] " }  text-black relative font-prompt `} role='navigation'>
+      <Link to="/" class="pl-8 text-[#E54E3D]">
         Lottery
       </Link>      
-      <div className="px-4 cusor-ponter md:hidden" onClick={toggle}>
+      <div class="px-4 cusor-ponter md:hidden" onClick={toggle}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6"
@@ -27,29 +26,29 @@ const Navbar = ({toggle}) => {
           />
         </svg>
       </div>
-      <div className="pr-8  md:block hidden ">
-        <Link className="p-4 hover:text-[#E54E3D]" to="/">
+      <div class="pr-8  md:block hidden ">
+        <Link class="p-4 hover:text-[#E54E3D]" to="/">
           หน้าหลัก
         </Link>
-        <Link className="p-4 hover:text-[#E54E3D] " to="/cart">
+        <Link class="p-4 hover:text-[#E54E3D] " to="/cart">
           ตะกร้าสินค้า
         </Link>
-        <Link className="p-4 hover:text-[#E54E3D]" to="/orders">
+        {/* <Link className="p-4 hover:text-[#E54E3D]" to="/orders">
           สินค้าที่จะได้รับ
-        </Link>
-        <Link className="p-4 hover:text-[#E54E3D]" to="/notification">
+        </Link> */}
+        <Link class="p-4 hover:text-[#E54E3D]" to="/notification">
           การแจ้งเตือน
         </Link>
-        <Link className="p-4 hover:text-[#E54E3D]" to="/account">
+        <Link class="p-4 hover:text-[#E54E3D]" to="/account">
           บัญชีผู้ใช้
         </Link>
-        <span className="border-l-2 border-red-200"/>
-        <Link className="p-4 hover:text-[#E54E3D]" to="/login">
+        <span class="border-l-2 border-red-200"/>
+        <Link class="p-4 hover:text-[#E54E3D]" to="/login">
           เข้าสู่ระบบ
         </Link>
         <Link
         to="/register"
-        className="p-10 py-1 px-1 border-2 border-[#E54E3D] rounded text-[#E54E3D] hover:bg-[#E54E3D] hover:text-white transition duration-300"
+        class="p-10 py-1 px-1 border-2 border-[#E54E3D] rounded text-[#E54E3D] hover:bg-[#E54E3D] hover:text-white transition duration-300"
       > 
       สมัครเป็นสมาชิก
           </Link>

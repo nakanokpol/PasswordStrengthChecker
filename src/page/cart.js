@@ -1,56 +1,36 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useCallback} from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import CartPack from "./components/cartPack";
 import CartSingle from "./components/cartSingle";
 import axios from "axios";
 import './cart.css'
 
-const url_ = 'http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io'
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMDcwMTYxLCJleHAiOjE2NTEwODA5NjF9.KmKrjDS012ivBmVFJ2_Bohs2SkcedVaXKq-V_kMJm-A'
+
+const url_ = 'http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io'
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMTA2OTUyLCJleHAiOjE2NTExNDI5NTJ9.daO6VuY34u68xyNzBU8-c_RdGoiI-fItwSFW2p1VsQQ'
 
 const Cart = (card_props)=>{
     const li_default_cart_data = []
-    // const li_default_cart_data = [
-    //     {
-    //         token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUwOTY1ODA1LCJleHAiOjE2NTA5Njk0MDV9.7MBSCD88VkHxkNe2c4kdczsVdSzgDZkxzpn9wwQOTco",
-    //         Number: "555555",
-    //         Amount: "1",
-    //         Storename: "ซู่ซู่",
-    //         Pack_Flag: "Y",
-    //         PackAmount: "2"
-    //     },
-    //     {
-    //         token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUwOTY1ODA1LCJleHAiOjE2NTA5Njk0MDV9.7MBSCD88VkHxkNe2c4kdczsVdSzgDZkxzpn9wwQOTco",
-    //         Number: "111189",
-    //         Amount: "1",
-    //         Storename: "ซู่ซู่",
-    //         Pack_Flag: "N",
-    //         PackAmount: "-"
-    //     },
-    //     {
-    //         token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUwOTY1ODA1LCJleHAiOjE2NTA5Njk0MDV9.7MBSCD88VkHxkNe2c4kdczsVdSzgDZkxzpn9wwQOTco",
-    //         Number: "999789",
-    //         Amount: "1",
-    //         Storename: "ซู่ซู่",
-    //         Pack_Flag: "Y",
-    //         PackAmount: "5"
-    //     }
-    //   ]
-
     const [cartData, setCartData] = useState(li_default_cart_data)
     const [checkFirstGetCart, setCheckGetCart] = useState(true)
     const [cost, setcost] = useState(0)
+    const [newCardData, setNewCartData] = useState(li_default_cart_data)
+    // const [canPay, setCanPay] = useState(false)
 
+    const navigate  = useNavigate();
+
+    // let isResponse = false
+    let orderIDpath = ""
 
     useEffect((event)=>{
         if(checkFirstGetCart === true){
             axios.get(url_+'/getCart'+'/'+token)/////////////////////
             .then(function (response) {
                 setCartData(response.data.Cart)
+                setNewCartData(response.data.Cart)
                 console.log("response.Cart",response.data.Cart)
                 console.log("check cartData",cartData)
-                
             })
             .catch(function (error) {
                 console.log(error);
@@ -76,9 +56,9 @@ const Cart = (card_props)=>{
             axios.get(url_+'/getCart'+'/'+token)/////////////////////
             .then(function (response) {
                 setCartData(response.data.Cart)
+                setNewCartData(response.data.Cart)
                 console.log("response.Cart",response.data.Cart)
                 console.log("check cartData",cartData)
-                
             })
             .catch(function (error) {
                 console.log(error);
@@ -102,22 +82,52 @@ const Cart = (card_props)=>{
         console.log("check Total Sum", sum, item)
         return sum
     }
-    
-    const getOrderID = ()=>{
+
+    const toPaymentMethod = useCallback(() => navigate(`/paymentmethod/${String(orderIDpath)}`, {replace: true}), [navigate]);
+
+    const getOrderID = (event)=>{
+        event.preventDefault()
+        for(let i = 0; i<newCardData.length;i++){
+            newCardData[i]["Amount"] = Number(newCardData[i]["Amount"])
+            newCardData[i]["Draw"] = "20"
+            newCardData[i]["Money"] = newCardData[i].Pack_Flag === "Y" ? String(Number(newCardData[i].Amount)*Number(newCardData[i].PackAmount)*80) : String(Number(newCardData[i].Amount)*80)
+            newCardData[i]["Number"] = newCardData[i]["Number_lottery"];
+            newCardData[i]["pack"] = newCardData[i]["Pack_Flag"];
+            delete newCardData[i]["Number_lottery"]
+            delete newCardData[i]["Pack_Flag"]
+        }
         axios.post(url_+'/confirmedOrder',{
             token:token,
-            deliver:"Yes",
-            lotteryList: cartData
+            delivery:"Yes",
+            lotteryList: newCardData
         })
-            .then(function (response) {
-                setCartData(response.data.Cart)
-                console.log("response.Cart",response.data.Cart)
-                console.log("check cartData",cartData)
-                
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        .then(function (response) {
+            console.log("check response cartData",response)
+            if(response.data.status === "200OK"){
+                // isResponse = true
+                orderIDpath = response.data.orderID
+                console.log("orderIDpath 200OK", orderIDpath)
+                // console.log("isResponse canpay 200OK", isResponse)
+                card_props.order_ID([response.data.orderID, newCardData])
+                toPaymentMethod()
+            }
+            else if(response.data.status === "200CE"){
+                // isResponse = false
+                // console.log("isResponse canpay 200CE", isResponse)
+                return [false, response.data.listError]
+            }
+            console.log("check getOrderID",{
+            token:token,
+            delivery:"Yes",
+            lotteryList: newCardData
+        })
+        // console.log("isResponse canpay", isResponse)
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+        
+        // return 
     }
 
     return (
@@ -137,15 +147,15 @@ const Cart = (card_props)=>{
                 <div style={{marginBottom:"1vw",paddingTop:"1vw",paddingBottom:"0.8vw", borderTopWidth:"0.1vw", borderColor:"#999191"}}>
                     <p style={{display:"flex", justifyContent:"space-between", paddingBottom:"0.6vw", color:"#999191"}}>ยอดรวมสินค้า<span>{cost}&ensp; บาท</span></p>
                     <p style={{display:"flex", justifyContent:"space-between", paddingBottom:"0.6vw", color:"#999191"}}>ค่าจัดส่งสินค้า<span>40 &ensp;บาท</span></p>
-                    <p class="text-2xl font-semibold" style={{display:"flex", justifyContent:"right"}}>ยอดรวมสุทธิ &ensp;&ensp;<span> {40+cost} &ensp; บาท</span></p>
+                    <p className="text-2xl font-semibold" style={{display:"flex", justifyContent:"right"}}>ยอดรวมสุทธิ &ensp;&ensp;<span> {40+cost} &ensp; บาท</span></p>
                 </div>
                 <div>
                     <form>
-                        <Link to="/paymentmethod" className={cost===0 ? "disableLink" : "enableLink"} state= {{token: token, delivery:"Yes", lotteryList: cartData, cost:cost, costAndDelivery: cost+40}}>
-                            <button id="goToPaymentMethod" className="flex goToPaymentMethod" disabled={cost===0 ? true: false} onclick={getOrderID}>
+                        {/* <Link to="/paymentmethod" className={isResponse===true ? "enableLink" : "disableLink"} state= {{token: token, delivery:"Yes", lotteryList: newCardData, cost:cost, costAndDelivery: cost+40}}> */}
+                            <button id="goToPaymentMethod" className="flex goToPaymentMethod" disabled={cartData.length < 1} onClick={getOrderID}>
                                 <p>ดำเนินการชำระเงิน</p>
                             </button>
-                        </Link>
+                        {/* </Link> */}
                     </form>
                 </div>
             </div>

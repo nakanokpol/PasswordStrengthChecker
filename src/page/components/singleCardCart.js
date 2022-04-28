@@ -15,7 +15,7 @@ const SingleCardTemplateCart = (card_props)=>{
                     <h1 className="text-center" style={{fontSize: "0.55VW"}}>งวดที่</h1>
                 </div>
                 <div style={{marginLeft: "8.6VW",marginTop: "-0.9115VW",height: "0.9115VW", width: "3VW"}}>
-                    <h1 className="text-left font-normal" style={{fontSize: "0.55VW"}}>{card_props.cardInfo.Draw}</h1>
+                    <h1 className="text-left font-normal" style={{fontSize: "0.55VW"}}>-</h1>
                 </div>
                 <div style={{marginLeft: "12VW", marginTop: "-0.9115VW",height: "0.9115VW", width: "1.8VW", backgroundColor: "#D3FAFA"}}>
                     <h1 className="text-center" style={{fontSize: "0.55VW"}}>ชุดที่</h1>

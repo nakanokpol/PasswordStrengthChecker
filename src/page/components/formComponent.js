@@ -1,7 +1,6 @@
 import './formComponent.css'
 import { useEffect, useState } from 'react'
 import { useContext } from 'react'
-import ResultForNum from './resultForNumAPI'
 
 const FormComponent =(props)=>{
     const li_str_num = ["0","1","2","3","4","5","6","7","8","9"]
@@ -11,7 +10,9 @@ const FormComponent =(props)=>{
     const [val_index_4, setIndexVal_4] = useState('')
     const [val_index_5, setIndexVal_5] = useState('')
     const [val_index_6, setIndexVal_6] = useState('')
-    const resultFor = useContext(ResultForNum)
+    // const resultFor = useContext(ResultForNum)
+    const [resultFor,setResultFor] = useState("------")
+
 
     const autoTab = (fieldID, fieldLen, nextFieldID) =>{
         if (document.getElementById(fieldID).value.length === fieldLen) {
@@ -80,6 +81,7 @@ const FormComponent =(props)=>{
         }
         console.log("formC inputItemData: ",inputItemData)
         props.search_num(inputItemData)
+        setResultFor(inputItemData.replace(/x/gi,"-"))
         // console.log(resultFor)
         setIndexVal_1('')
         setIndexVal_2('')

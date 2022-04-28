@@ -1,7 +1,6 @@
 import './formComponent.css'
 import { useEffect, useState } from 'react'
 import { useContext } from 'react'
-import ResultForNum from './resultForNumAPI'
 import Logo from '../imgComponents/tempPhoto.jpg';
 
 const StoreHeaderComponent =(props)=>{

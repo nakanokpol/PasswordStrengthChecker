@@ -3,8 +3,9 @@ import axios from "axios";
 import SingleCardTemplateInfo from "./components/singleCardInfo"
 import { useLocation, Link  } from "react-router-dom";
 import './singleLotteryInfo.css'
-const url_ = 'http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io'
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMDcwMTYxLCJleHAiOjE2NTEwODA5NjF9.KmKrjDS012ivBmVFJ2_Bohs2SkcedVaXKq-V_kMJm-A'
+
+const url_ = 'http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io'
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMTA2OTUyLCJleHAiOjE2NTExNDI5NTJ9.daO6VuY34u68xyNzBU8-c_RdGoiI-fItwSFW2p1VsQQ'
 
 function SingleLotteryInfo(props) {
   const cardInfo = useLocation()
@@ -23,14 +24,17 @@ function SingleLotteryInfo(props) {
      Amount:item.Stock,
      Storename: item.Storename,
      Pack_Flag:item.pack,
-     PackAmount:"-"})
+     PackAmount:"-",
+     DrawDate: item.DrawDate
+    })
     .then(function (response) {
       console.log("check Singleaddtocart",{
         Number_lottery: item.Number,
         Amount:item.Stock,
         Storename: item.Storename,
         Pack_Flag:item.pack,
-        PackAmount:"-"
+        PackAmount:"-",
+        DrawDate: item.DrawDate
       })
     })
     .catch(function (error) {
