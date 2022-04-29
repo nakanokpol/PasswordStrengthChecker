@@ -1,24 +1,16 @@
-import React,{useState,useEffect} from 'react'
-;
+import React,{useState,useEffect} from 'react';
+import { global_url_token } from '../page/global_url_token';
 
 function Profile(props) {
-  
-    
     const [firstName, setFirstName] = useState("");
     const [lastName, setlastName] = useState("");
-    
-
     // console.log(dataProfile)
     // console.log(response);
   return (
       <>
     <div class='grid grid-cols-3 gap-9    '>
         <h1 class='mb-5  xl:text-2xl font-semibold	md:text-xl '>ข้อมูลส่วนตัว</h1>
-        <div class='col-span-2  text-right m-2'>
-        
-        
-        </div>
-        
+        <div class='col-span-2  text-right m-2'></div>
     </div>
         <div class='grid grid-cols-2 gap-7'>
             <div class='font-semibold text-[#E54E3D]'>

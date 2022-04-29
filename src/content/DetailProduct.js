@@ -1,4 +1,5 @@
 import React from "react";
+import { global_url_token } from "../page/global_url_token";
 
 function DetailProduct({ setModalOn, data, setApprove, approve ,lot,Id,num,setState}) {
   // const [lot, setText] = useState(null);
@@ -10,9 +11,6 @@ function DetailProduct({ setModalOn, data, setApprove, approve ,lot,Id,num,setSt
     return myArray
 
   }
-
-
-  
 
   const handleOKClick = () => {
     setModalOn(false);

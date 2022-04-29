@@ -1,3 +1,5 @@
+import { global_url_token } from "../../page/global_url_token";
+
 const Inputpack=(props)=> {
     const{label,onChange,id,...inputProps}=props;
   return (

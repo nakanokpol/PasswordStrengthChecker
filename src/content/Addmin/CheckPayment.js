@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DetailPaymaent from "./DetailPaymaent";
+import { global_url_token } from "../../page/global_url_token";
 // import Editcheckpay from './Editcheckpay';
 
 function CheckPayment({ data }) {

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { global_url_token } from "../../page/global_url_token";
 
 function Editprofile(props) {
   const [firstNameE, setFirstNameE] = useState(props.firstName);
@@ -20,11 +21,10 @@ function Editprofile(props) {
   function putEdit() {
     axios
       .put(
-        "http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io/updateCustomerAccount/customer/ChangeAccountInfo/",
+        global_url_token.url+"/updateCustomerAccount/customer/ChangeAccountInfo/",
         {
           // data: {
-          token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMDU3MTUyLCJleHAiOjE2NTEwNjc5NTJ9.yh8l-YbdGp2gThPSkVBtzhQpKgCZIBVyVkgNdq0YX0A",
+          token: global_url_token.customer_token,
           Firstname: firstNameE,
           Lastname: lastNameE,
           Email: mailE,

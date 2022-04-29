@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useCallback } from "react";
+import { global_url_token } from "./global_url_token";
+
+//////customer
 const Random = () => {
   const [random, setRandom] = useState("");
   const [success, setSuccess] = useState(false);
@@ -8,21 +14,27 @@ const Random = () => {
   const defaultValues = {
     Amount: random,
   };
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMDk1MDY5LCJleHAiOjE2NTExMDU4Njl9.zZTFWwlN6yIPsi6UAETNHnsminyO6h4jjsazH4j0fa4";
+
+  const navigate  = useNavigate()
+  const toHome = useCallback(() => navigate('/', {replace: true}), [navigate]);
+
   const Random = () => {
+    // console.log("random", {
+    //   token: token,
+    //   Amount: String(defaultValues.Amount)
+    // })
     axios
-      .post("http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/login", {
-        token: token,
-        Amount: defaultValues.Amount,
+      .post(global_url_token.url+"/randomLottery", {
+        token: global_url_token.customer_token,
+        Amount: String(defaultValues.Amount)
       })
       .then(function (response) {
-        if (response.data.status === "200OK") {
-          localStorage.setItem("token", response.data.token);
-          const decoded = jwt_decode(response.data.token);
-          const { username, role } = decoded;
-          console.log(response);
-        }
+        console.log("response random", response)
+        console.log("random", {
+          token: global_url_token.customer_token,
+          Amount: String(defaultValues.Amount)
+        })
+        toHome()
       })
       .catch(function (error) {
         console.log(error);
@@ -74,9 +86,9 @@ const Random = () => {
             />
 
             <div className="mt-7">
-              <button className="w-full inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold capitalize text-white hover:bg-red-700 active:bg-red-700 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 disabled:opacity-25 transition">
-                ยืนยันเพื่อเพิ่มลงตะกร้า
-              </button>
+                <button className="w-full inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold capitalize text-white hover:bg-red-700 active:bg-red-700 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 disabled:opacity-25 transition">
+                  ยืนยันเพื่อเพิ่มลงตะกร้า
+                </button>
             </div>
           </form>
         </div>

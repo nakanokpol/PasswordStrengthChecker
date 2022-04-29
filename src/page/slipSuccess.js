@@ -5,9 +5,9 @@ import axios from "axios";
 import './cart.css';
 import Logo from './imgComponents/waitforprocess.png';
 import './slipSuccess.css';
+import { global_url_token } from "./global_url_token";
 
-const url_ = 'http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io'
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMTA2OTUyLCJleHAiOjE2NTExNDI5NTJ9.daO6VuY34u68xyNzBU8-c_RdGoiI-fItwSFW2p1VsQQ'
+//////customer
 
 const SlipPayment = (card_props)=>{
     const paymentInfo = useLocation()

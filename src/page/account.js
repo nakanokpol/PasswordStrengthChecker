@@ -6,10 +6,9 @@ import Header from "../content/component/Header";
 import Profile from "../content/Profile";
 import Pic from "../Assets/5fb952383d4b9b0cc0fd7d2e_800x0xcover_3aaaqsST.jpg";
 import axios from "axios";
+import { global_url_token } from "./global_url_token";
 
 function Account() {
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMDU3MTUyLCJleHAiOjE2NTEwNjc5NTJ9.yh8l-YbdGp2gThPSkVBtzhQpKgCZIBVyVkgNdq0YX0A";
   const [toggleState, setToggleState] = useState(1);
   const [dataProfile, setDataprofile] = useState();
   const [editMode, setEditMode] = useState(false);
@@ -41,7 +40,7 @@ function Account() {
 
     axios
       .get(
-        "http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io/getCustomerAccount/" + token
+        global_url_token.url+"/getCustomerAccount/" + global_url_token.customer_token
       )
 
       .then(function (response) {

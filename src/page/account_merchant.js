@@ -7,6 +7,7 @@ import Header from "../content/component/Header";
 import Pic from "../Assets/5fb952383d4b9b0cc0fd7d2e_800x0xcover_3aaaqsST.jpg";
 import ProductStore from "../content/ProductStore";
 import Profile_m from "../content/Profile_m";
+import { global_url_token } from "./global_url_token";
 // import Tabadd from "../content/Tabadd";
 
 function Account_merchant() {
@@ -18,9 +19,6 @@ function Account_merchant() {
         setEditMode(false);
   }
  
-
- 
-
   console.log(editMode);
   const toggleTab = (index) => {
     console.log(index);

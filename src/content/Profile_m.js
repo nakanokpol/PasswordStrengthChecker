@@ -1,16 +1,13 @@
 import React,{useState,useEffect} from 'react'
+import { global_url_token } from '../page/global_url_token';
 
 function Profile() {
-    // const TOKEN = {
-    //     token: ,
-    //   };
     const [firstName, setFirstName] = useState("");
     const [lastName, setlastName] = useState("");
     const [numberName, setnumberName] = useState("");
     
       function getProfile() {
-        var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxveW9uZyIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTY1MDA5MTI1NSwiZXhwIjoxNjUwMDk0ODU1fQ.rXK_qQKSkpRtfQ12C_dpawRMHj2rX6k9iqLpbWTM-2w"
-        fetch("http://5215-2403-6200-88a2-303e-9516-d0fe-3377-c8d.ngrok.io/getCustomerAccount/"+token, {
+        fetch(global_url_token.url + "/getCustomerAccount/" + global_url_token.seller_token, {
           method: "GET", // or 'PUT','GET'
           headers: {
             "Content-Type": "application/json",

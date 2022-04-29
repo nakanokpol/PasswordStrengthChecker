@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import SingleCardTemplate from "./components/singleCard"
 import PackedCardTemplate from "./components/packedCard"
 import StoreHeaderComponent from "./components/storeHeaderComponent";
-// import ResultForNum from "./components/resultForNumAPI"
 import axios from "axios";
+import { global_url_token } from "./global_url_token";
 
 function Store(props) {
 

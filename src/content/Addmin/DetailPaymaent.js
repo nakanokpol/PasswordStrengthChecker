@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import axios from 'axios';
+import { global_url_token } from '../../page/global_url_token';
 
 
 function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,money,customerID}) {
@@ -7,10 +8,9 @@ function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,mo
   function putPayment(oid,app,money) {
     axios
       .put(
-        "http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/updateOrderPayment/",
+        global_url_token.url+"/updateOrderPayment/",
         {
-          token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMTA1MDc0LCJleHAiOjE2NTExNDEwNzR9.Jqzo0DwN1452zZkmEaF4KwbN9-L1ek7om5M1ThAxhPo",
+          token: global_url_token.admin_token,
           orderID: id,
           customerID: customerID,
           approve: app,

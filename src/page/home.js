@@ -4,6 +4,7 @@ import SingleCardTemplate from "./components/singleCard"
 import PackedCardTemplate from "./components/packedCard"
 import FormComponent from "./components/formComponent"
 import axios from "axios";
+import { global_url_token } from "./global_url_token";
 
 function Home(props) {
   const {li_dataToshow} = props // li_data is default data to show on Home

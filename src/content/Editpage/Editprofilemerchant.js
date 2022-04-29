@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { global_url_token } from "../../page/global_url_token";
 
 function Editprofile(props) {
   const [firstNameE, setFirstNameE] = useState(props.firstName);

@@ -2,6 +2,7 @@ import React, { useState, useEffect,useCallback } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import { global_url_token } from "./global_url_token";
 
 const Register = () => {
   const [formErrors, setFormErrors] = useState({});
@@ -70,7 +71,7 @@ const Register = () => {
   };
   const Register = () => {
     axios
-      .post("http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/register", {
+      .post(global_url_token.url+"/register", {
         Title: defaultValues.Title,
         Firstname: defaultValues.Firstname,
         Lastname: defaultValues.Lastname,
@@ -114,7 +115,7 @@ const Register = () => {
   };
   
   const navigate  = useNavigate()
-  const toAccountMs = useCallback(() => navigate('/accountmerchant', {replace: true}), [navigate]);
+  const toAccountMs = useCallback(() => navigate('/', {replace: true}), [navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -122,10 +123,11 @@ const Register = () => {
     setIsSubmit(true);
     Register();
 
-    if(!formErrors){
+    // if(!formErrors){
+    //   console.log("pass all")
       toAccountMs()
-    }
-  };
+    // }
+  }
 
   useEffect(() => {
     console.log(formErrors);

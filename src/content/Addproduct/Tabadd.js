@@ -10,8 +10,6 @@ function Tabadd() {
     setTabState(i);
     //  console.log("click");
   };
- 
-
 
   return (
       

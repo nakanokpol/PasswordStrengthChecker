@@ -5,10 +5,7 @@ import CartPack from "./components/cartPack";
 import CartSingle from "./components/cartSingle";
 import axios from "axios";
 import './cart.css'
-
-
-const url_ = 'http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io'
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMTA2OTUyLCJleHAiOjE2NTExNDI5NTJ9.daO6VuY34u68xyNzBU8-c_RdGoiI-fItwSFW2p1VsQQ'
+import { global_url_token } from "./global_url_token";
 
 const Cart = (card_props)=>{
     const li_default_cart_data = []
@@ -25,7 +22,7 @@ const Cart = (card_props)=>{
 
     useEffect((event)=>{
         if(checkFirstGetCart === true){
-            axios.get(url_+'/getCart'+'/'+token)/////////////////////
+            axios.get(global_url_token.url+'/getCart/'+global_url_token.customer_token)/////////////////////
             .then(function (response) {
                 setCartData(response.data.Cart)
                 setNewCartData(response.data.Cart)
@@ -43,9 +40,9 @@ const Cart = (card_props)=>{
 
     const removeCartNumber = (item)=>{
         console.log("remove : ", item)
-        axios.delete(url_+'/removeLottery', ////////////////////////////
+        axios.delete(global_url_token.url+'/removeLottery', ////////////////////////////
         {data : {
-            token: token,
+            token: global_url_token.customer_token,
             Number_lottery: item.Number_lottery,
             Storename: item.Storename,
             pack: item.Pack_Flag,
@@ -53,7 +50,7 @@ const Cart = (card_props)=>{
         }})
         .then(function (response) {
             console.log("remove response : ", response)
-            axios.get(url_+'/getCart'+'/'+token)/////////////////////
+            axios.get(global_url_token.url+'/getCart'+'/'+global_url_token.customer_token)/////////////////////
             .then(function (response) {
                 setCartData(response.data.Cart)
                 setNewCartData(response.data.Cart)
@@ -68,7 +65,7 @@ const Cart = (card_props)=>{
             console.log(error);
         });
         console.log({
-            token: token,
+            token: global_url_token.customer_token,
             Number_lottery: item.Number_lottery,
             Storename: item.Storename,
             pack: item.Pack_Flag,
@@ -96,8 +93,8 @@ const Cart = (card_props)=>{
             delete newCardData[i]["Number_lottery"]
             delete newCardData[i]["Pack_Flag"]
         }
-        axios.post(url_+'/confirmedOrder',{
-            token:token,
+        axios.post(global_url_token.url+'/confirmedOrder',{
+            token:global_url_token.customer_token,
             delivery:"Yes",
             lotteryList: newCardData
         })
@@ -117,7 +114,7 @@ const Cart = (card_props)=>{
                 return [false, response.data.listError]
             }
             console.log("check getOrderID",{
-            token:token,
+            token:global_url_token.customer_token,
             delivery:"Yes",
             lotteryList: newCardData
         })

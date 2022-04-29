@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import DetailSeller from "./DetailSeller";
 import axios from "axios";
-
+import { global_url_token } from "../../page/global_url_token";
 
 function Checkrigis({data}) {
   const [modalOn, setModalOn] = useState(false);
-  
+
   const[approve,setApprove] = useState(
     () => {
     const saveStatus = localStorage.getItem("Sellertus");
@@ -16,6 +16,8 @@ function Checkrigis({data}) {
       return [];
     }
   })
+
+
 
   useEffect(() => {
     localStorage.setItem("Sellertus", JSON.stringify(approve));
@@ -35,7 +37,7 @@ function Checkrigis({data}) {
     setModalOn(true);
    
   };
-
+  
   const setState= (a) => {
    let tus =[]
             for(let i=0;i<approve.length;i++){
@@ -68,7 +70,7 @@ function Checkrigis({data}) {
 //   console.log("t =" + t1);
   return (
     <>
-      <h1 class="mb-5  text-2xl font-semibold	 ">คำขอลงทะเบียน</h1>
+      <h1 class="mb-5  text-2xl font-semibold	 ">แจ้งเลขพัสดุ</h1>
        {/* {setComment(3)} */}
       <div class=" flex justify-center items-center bg-white  font-prompt">
         <div class="overflow-x-auto  xl:w-[560px]  xl:h-[450px] md:w-[450px] sm:w-[400px]">

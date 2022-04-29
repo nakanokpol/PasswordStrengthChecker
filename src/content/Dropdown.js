@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { global_url_token } from '../page/global_url_token'
 
 function Dropdown({isOpen,toggle}) {
   return (

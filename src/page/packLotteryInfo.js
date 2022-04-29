@@ -3,9 +3,8 @@ import axios from "axios";
 import PackedCardTemplateInfo from "./components/packedCardInfo";
 import { useLocation, Link, Routes, Route } from "react-router-dom";
 import './packLotteryInfo.css'
+import { global_url_token } from "./global_url_token";
 
-const url_ = 'http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io'
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMTA2OTUyLCJleHAiOjE2NTExNDI5NTJ9.daO6VuY34u68xyNzBU8-c_RdGoiI-fItwSFW2p1VsQQ'
 
 function PackLotteryInfo(props) {
   const cardInfo = useLocation()
@@ -45,8 +44,8 @@ function PackLotteryInfo(props) {
   const sendSelectItemToCart =(event)=>{
     event.preventDefault()
     const item = cardInfoState.cardInfo
-    axios.post(url_+'/cart', 
-    {token: token,
+    axios.post(global_url_token.url+'/cart', 
+    {token: global_url_token.customer_token,
      Number_lottery: item.Number,
      Amount:item.Stock,
      Storename: item.Storename,

@@ -1,12 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom'
+import { global_url_token } from "../page/global_url_token";
 
 const Navbar = ({toggle}) => {
   const location = useLocation();
   return (
     // white navbar - home ,buy , store
-    <nav class={`flex justify-between items-center h-16 ${location.pathname === "/" ? "bg-white shadow-sm ":"bg-[#FFE5A3] " }  text-black relative font-prompt `} role='navigation'>
+    <nav class={`flex justify-between items-center h-16 
+    ${location.pathname === "/" ? "bg-white shadow-sm "
+    : location.pathname === "/singlelotteryinfo" ? "bg-white shadow-sm " 
+    : location.pathname === "/packlotteryinfo" ? "bg-white shadow-sm " 
+    : location.pathname === "/store" ? "bg-white shadow-sm "
+    :"bg-[#FFE5A3] " }  text-black relative font-prompt `} role='navigation'>
+      
       <Link to="/" class="pl-8 text-[#E54E3D]">
         Lottery
       </Link>      

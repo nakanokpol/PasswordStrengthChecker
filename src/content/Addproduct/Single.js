@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import validationadd from "./Validationadd";
+import axios from "axios";
+import { global_url_token } from "../../page/global_url_token";
 
 function Single() {
   const d = new Date();
@@ -22,7 +24,7 @@ function Single() {
   var day;
   if (d.getDate() > 16) {
     day = 1;
-    m = month[d.getMonth()+1];
+    m = month[d.getMonth() + 1];
   } else {
     day = 16;
   }
@@ -37,7 +39,7 @@ function Single() {
       return [];
     }
   });
-  
+
   const [number, setNumber] = useState("");
   const [draw, setDraw] = useState("");
   const [pack, setPack] = useState("");
@@ -52,9 +54,31 @@ function Single() {
     setNumber(e.target.value);
   }
 
+  function putPayment() {
+    axios
+      .post(global_url_token.url+"/addSingleLottery", {
+        token: global_url_token.seller_token,
+        lotteryList: [
+          {
+            Number:  number.trim(),
+            Lot: pack.trim(),           
+            Draw:  draw.trim(),
+            DrawDate: drawDate,
+          },
+        ],
+      })
+      .then(function (response) {
+        console.log(response);
+        // console.log(data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   function handleFormSubmit(e) {
     e.preventDefault();
-
+    putPayment() 
     if (number !== "" && draw !== "" && pack !== "" && drawDate !== "") {
       setValid(true);
       setLottery([
@@ -117,7 +141,7 @@ function Single() {
                     onChange={(event) => setDrawDate(event.target.value)}
                     required
                   >
-                    <option  hidden>--เลือกงวดวันที--</option>
+                    <option hidden>--เลือกงวดวันที--</option>
                     <option value={`${dDate}`}>{dDate}</option>
                   </select>
                 </div>
@@ -186,8 +210,8 @@ function Single() {
                     <div class="flex justify-between">
                       <h5 class="pl-2 p-2">วันที่</h5>
                       <h5 class="pl-2 p-2 bg-[#FFF8E6] w-[130px] rounded-md text-center ">
-                       {lotto.drawDate}
-                        </h5>
+                        {lotto.drawDate}
+                      </h5>
                     </div>
                   </div>
 

@@ -4,12 +4,9 @@ import { useState, useEffect, useContext } from "react";
 import OrderID_API from "./components/orderID_API";
 import axios from "axios";
 import './cart.css';
-import Logo from './imgComponents/tempPhoto.jpg';
+import Logo from './imgComponents/howtopay.png';
 import './payment.css';
-
-
-const url_ = 'http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io'
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMTA2OTUyLCJleHAiOjE2NTExNDI5NTJ9.daO6VuY34u68xyNzBU8-c_RdGoiI-fItwSFW2p1VsQQ'
+import { global_url_token } from "./global_url_token";
 
 const Payment = (card_props)=>{
     // const [temp_id,temp_li] = useContext(OrderID_API)
@@ -36,7 +33,7 @@ const Payment = (card_props)=>{
     useEffect(()=>{
         if (images.length < 1)return;
         const newImageURL = [];
-        images.forEach((image)=> newImageURL.push(URL.createObjectURL(image)))
+        images.forEach((image)=> newImageURL.push(URL.createObjectURL(image)))//////
         setImagwURLs(newImageURL);
     },[images])
 
@@ -63,9 +60,9 @@ const Payment = (card_props)=>{
 
     const sendImageURL = (event) =>{
         event.preventDefault()
-        axios.put(url_+'/updateOrderSlip',
+        axios.put(global_url_token.url+'/updateOrderSlip',
            {
-                token:token,
+                token:global_url_token.customer_token,
                 URLSlip:imageURLs[0],
                 OrderID:String(temp_id)
             })
@@ -74,7 +71,7 @@ const Payment = (card_props)=>{
             console.log("temp_li", temp_li)
             console.log("response payment img",response)
             console.log("check data sending",{
-                token:token,
+                token:global_url_token.customer_token,
                 URLSlip:imageURLs[0],
                 OrderID:String(temp_id)
             })
@@ -99,43 +96,46 @@ const Payment = (card_props)=>{
             console.log(error);
         });
         console.log("check data sending7777",{
-            token:token,
+            token:global_url_token.customer_token,
             URLSlip:imageURLs[0],
             OrderID:String(temp_id)
         })
     }
 
     return (
-        <div className="font-prompt flex justify-center" style={{backgroundColor:"#FFE5A3"}}>
-            <div class="flex flex-col p-8 m-8 bg-white rounded-xl shadow-xl min-w-[44.25%] w-[97%] 2xl:w-[44.25%] xl:w-[53.1%] lg:w-[66.375%] md:w-[88.5%] sm:w-[95%] xs:w-[97%]" style={{}}>
-                <div>
-                    <h1 class="text-xl font-semibold mb-2" style={{color:"#E54E3D"}}>การชำระเงิน</h1>
-                    <div className="justify-left" style={{marginTop:"0vw"}}></div>
-                    <div style={{height:"1vw"}}></div>
-                    <div style={{marginBottom:"0vw",paddingTop:"1vw",paddingBottom:"0.8vw", borderTopWidth:"0.1vw", borderColor:"#999191"}}>
-                        <p style={{display:"flex", justifyContent:"space-between", paddingBottom:"0vw", color:"#000000"}}>ยอดเงินที่ต้องชำระ<span class="text-2xl font-semibold" style={{color:"#E54E3D"}}>{totalCost() + 40}&ensp; บาท</span></p>
+        <div className="font-prompt justify-center h-screen" style={{backgroundColor:"#FFE5A3"}}>
+            <div className="font-prompt flex justify-center" style={{backgroundColor:"#FFE5A3"}}>
+                <div class="flex flex-col p-8 m-8 bg-white rounded-xl shadow-xl min-w-[44.25%] w-[97%] 2xl:w-[44.25%] xl:w-[53.1%] lg:w-[66.375%] md:w-[88.5%] sm:w-[95%] xs:w-[97%]" style={{}}>
+                    <div>
+                        <h1 class="text-xl font-semibold mb-2" style={{color:"#E54E3D"}}>การชำระเงิน</h1>
+                        <div className="justify-left" style={{marginTop:"0vw"}}></div>
+                        <div style={{height:"1vw"}}></div>
+                        <div style={{marginBottom:"0vw",paddingTop:"1vw",paddingBottom:"0.8vw", borderTopWidth:"0.1vw", borderColor:"#999191"}}>
+                            <p style={{display:"flex", justifyContent:"space-between", paddingBottom:"0vw", color:"#000000"}}>ยอดเงินที่ต้องชำระ<span class="text-2xl font-semibold" style={{color:"#E54E3D"}}>{totalCost() + 40}&ensp; บาท</span></p>
+                        </div>
+                        <div className="flex" style={{justifyContent:"center", marginBottom:"1vw",paddingTop:"1vw",paddingBottom:"0.8vw", borderTopWidth:"0.1vw", borderColor:"#999191", justifyItems:"center"}}>
+                            <img style={{maxWidth:"70%",justifySelf:"center"}} src={Logo} />
+                        </div>
                     </div>
-                    <div className="flex" style={{justifyContent:"center", marginBottom:"1vw",paddingTop:"1vw",paddingBottom:"0.8vw", borderTopWidth:"0.1vw", borderColor:"#999191", justifyItems:"center"}}>
-                        <img style={{maxWidth:"70%",justifySelf:"center"}} src={Logo} />
+                    <div className="" style={{display:"flex",justifyContent:"center"}}>
+                        <input className="custom-file-input" type="file" access="image/*" style={{justifyItems:"center"}} onChange={onImageChange}/>
                     </div>
-                </div>
-                <div className="" style={{display:"flex",justifyContent:"center"}}>
-                    <input className="custom-file-input" type="file" access="image/*" style={{justifyItems:"center"}} onChange={onImageChange}/>
-                </div>
-                <div className="" style={{display:"flex",justifyContent:"center", width:"100%"}}>
-                    {imageURLs.map(imageSrc => <img style={{maxWidth:"50%",justifySelf:"center"}} src={imageSrc}/>)}
-                </div>
-                <div>
-                    <form>
-                        {/* <Link to="/" className={images.length < 1 ? "disableLink" : "enableLink"} state= {paymentInfo.state}> */}
-                            <button id="goToPaymentMethod" className="flex goToPaymentMethod" disabled={images.length < 1 ? true: false} onClick={sendImageURL}>
-                                <p>ดำเนินการชำระเงิน</p>
-                            </button>
-                        {/* </Link> */}
-                    </form>
+                    <div className="" style={{display:"flex",justifyContent:"center", width:"100%"}}>
+                        {imageURLs.map(imageSrc => <img style={{maxWidth:"50%",justifySelf:"center"}} src={imageSrc}/>)}
+                    </div>
+                    <div>
+                        <form>
+                            {/* <Link to="/" className={images.length < 1 ? "disableLink" : "enableLink"} state= {paymentInfo.state}> */}
+                                <button id="goToPaymentMethod" className="flex goToPaymentMethod" disabled={images.length < 1 ? true: false} onClick={sendImageURL}>
+                                    <p>ดำเนินการชำระเงิน</p>
+                                </button>
+                            {/* </Link> */}
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+        
     );
 }
 

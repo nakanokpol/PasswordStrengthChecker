@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { global_url_token } from "../../page/global_url_token";
 function DetailSeller({ setModalOn, data, setApprove, approve, id, setState }) {
   const [text, setText] = useState(null);
   
   function putSeller(e) {
-    axios.put("https://cors-anywhere.herokuapp.com/http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io/updateSellerIdentity",
-        {data:{
-          token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMTA1MDc0LCJleHAiOjE2NTExNDEwNzR9.Jqzo0DwN1452zZkmEaF4KwbN9-L1ek7om5M1ThAxhPo",
+    axios
+      .put(
+        global_url_token.url+"/updateSellerIdentity/",
+        {
+          token:global_url_token.admin_token,
           approve: e,
-          sellerID: id
-        }})
+          sellerID: id,
+          
+        }
+      )
+
       .then(function (response) {
-        console.log("pol0",response)
-        console.log("pol1",{data:{
-          token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMTA1MDc0LCJleHAiOjE2NTExNDEwNzR9.Jqzo0DwN1452zZkmEaF4KwbN9-L1ek7om5M1ThAxhPo",
-          approve: e,
-          sellerID: id
-        }})
+        console.log(response);
+        // console.log(data)
       })
       .catch(function (error) {
         console.log(error);
@@ -32,8 +34,8 @@ function DetailSeller({ setModalOn, data, setApprove, approve, id, setState }) {
       {
         approve: "yes",
         comment: `${text}`,
-        sellerID: id
-      }
+        sellerID: id,
+      },
     ]);
   };
   const handleCancelClick = () => {
@@ -45,8 +47,8 @@ function DetailSeller({ setModalOn, data, setApprove, approve, id, setState }) {
       {
         approve: "no",
         comment: `${text}`,
-        sellerID: id
-      }
+        sellerID: id,
+      },
     ]);
   };
 

@@ -6,6 +6,7 @@ import Checkrigis from "../content/Addmin/Checkregis";
 import CheckPayment from "../content/Addmin/CheckPayment";
 import Tracking from "../content/Addmin/Tracking";
 import axios from "axios";
+import { global_url_token } from "./global_url_token";
 
 function Account_admin() {
   const [toggleState, setToggleState] = useState(1);
@@ -17,16 +18,12 @@ function Account_admin() {
   const changeTofalse = () => {
     setEditMode(false);
   };
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMTA1MDc0LCJleHAiOjE2NTExNDEwNzR9.Jqzo0DwN1452zZkmEaF4KwbN9-L1ek7om5M1ThAxhPo";
-
   // console.log(editMode);
 
   function getProfileAdmin() {
     axios
       .get(
-        "http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/getOrderPayment/" +
-          token
+        global_url_token.url +"/getOrderPayment/" + global_url_token.admin_token
       )
       .then(function (response) {
         // handle success
@@ -48,8 +45,7 @@ function Account_admin() {
   function getSellerinfo() {
     axios
       .get(
-        "http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/getSellerIdentity/" +
-          token
+        global_url_token.url+"/getSellerIdentity/" + global_url_token.admin_token
       )
       .then(function (response) {
         // handle success
@@ -70,7 +66,7 @@ function Account_admin() {
 
   function getTrackinginfo() {
     axios
-      .get("http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/getCommon/" + token)
+      .get(global_url_token.url+"/getCommon/" + global_url_token.admin_token)
       .then(function (response) {
         // handle success
         if (response.data.status == "200OK") {

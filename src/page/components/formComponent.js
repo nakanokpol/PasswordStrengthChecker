@@ -1,6 +1,8 @@
 import './formComponent.css'
 import { useEffect, useState } from 'react'
 import { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { global_url_token } from '../global_url_token';
 
 const FormComponent =(props)=>{
     const li_str_num = ["0","1","2","3","4","5","6","7","8","9"]
@@ -113,9 +115,11 @@ const FormComponent =(props)=>{
                         <div className="submit_button">
                             <button className="font-extralight" type="submit">ค้นหา</button>
                         </div>
-                        <div className="go_random_button">
-                            <button type="go_random"><u>ไปยังระบบสุ่ม</u></button>
-                        </div>
+                        <Link to ="/random">
+                            <div className="go_random_button">
+                                <button type="go_random"><u>ไปยังระบบสุ่ม</u></button>
+                            </div>
+                        </Link>
                         <div className="result_for">
                             <p>ผลการค้นหาของหมายเลข: {resultFor}</p>
                         </div>

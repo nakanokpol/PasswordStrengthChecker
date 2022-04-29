@@ -1,5 +1,6 @@
 import React from "react";
 import PackedCardTemplateCart from "./packedCardCart";
+import { global_url_token } from '../global_url_token';
 
 const CartPack = (card_props)=>{
     console.log("CartSingle ", card_props)

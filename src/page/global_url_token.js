@@ -1,0 +1,8 @@
+const global_url_token = {
+    url: "http://265f-2403-6200-88a4-4c62-c81f-324d-a5c2-fa5d.ngrok.io",
+    admin_token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMjQ5MzgxLCJleHAiOjE2NTEyODUzODF9.3LEMV0z4xw2bygYdqXI-z1r-072C7GThn4gGYtJIWMM",
+    customer_token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMjQ5NDQ5LCJleHAiOjE2NTEyODU0NDl9.IgS6_1F4X9xQzfRWLi_hzOhGzki8Xg3EEYK2udDYgfo",
+    seller_token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTI0OTQyMywiZXhwIjoxNjUxMjg1NDIzfQ.AM9tOsI7b1iIs-g3MoJV3LUlImr5JW3zFfysLx_GzwA"
+};
+
+export {global_url_token};

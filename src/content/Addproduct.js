@@ -1,5 +1,6 @@
 import React from 'react'
 import Tabadd from './Addproduct/Tabadd'
+import { global_url_token } from '../page/global_url_token'
 
 function Addproduct() {
   return (

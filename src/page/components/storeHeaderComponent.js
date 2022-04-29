@@ -2,6 +2,7 @@ import './formComponent.css'
 import { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import Logo from '../imgComponents/tempPhoto.jpg';
+import { global_url_token } from '../global_url_token';
 
 const StoreHeaderComponent =(props)=>{
     return(

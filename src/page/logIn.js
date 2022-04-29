@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import { global_url_token } from "./global_url_token";
 
 const LogIn = () => {
   const userRef = useRef();
@@ -19,7 +20,7 @@ const LogIn = () => {
 
   const Login = () => {
     axios
-      .post("http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/login", {
+      .post(global_url_token.url+"/login", {
         Username: defaultValues.user,
         Password: defaultValues.pwd,
       })

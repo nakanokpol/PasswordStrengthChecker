@@ -1,5 +1,6 @@
 import React, { useEffect, useState,useRef } from 'react'
 import AcceptDel from './component/AcceptDel';
+import { global_url_token } from '../page/global_url_token';
 
 function ProductStore() {
     const [dataProduct,setDataProduct] = useState([]);
