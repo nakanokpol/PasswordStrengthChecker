@@ -4,7 +4,7 @@ import { global_url_token } from '../global_url_token';
 
 const SingleCardTemplateInfo = (card_props)=>{
 
-    console.log("nice checking500", card_props.cardInfoData)
+    console.log("check SingleCardTemplateInfo", card_props.cardInfoData)
     return (
         <div className="font-prompt" style={{}}>
             <div className="font-prompt">

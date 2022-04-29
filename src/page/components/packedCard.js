@@ -49,8 +49,21 @@ const PackedCardTemplate = (card_props)=>{
                         <h1 className="text-center font-light" style={{fontSize: "0.8VW"}}>{card_props.cardInfo.DrawDate}</h1>
                     </div>
                 </div>
+                <div>
+                    {/*<div className = {`${card_props.cardInfo.Amount === "2" ? "border-t-[#00ff00]"
+                    : card_props.cardInfo.Amount === "3" ? "border-t-[#ff0000]"
+                    : card_props.cardInfo.Amount === "5" ? "border-t-[#0000ff]"
+                    : "border-[#00ffff]"}`} style={{height:"6vw",width:"6vw", marginTop: "-11.25VW",borderTop:"6vw solid", borderRight:"6vw solid transparent"}}></div> */}
+
+                    <div className={setAmountClass(card_props.cardInfo.Amount)} style={{height:"6vw",width:"6vw", marginTop: "-7.9VW"}}></div>
+                    <div style={{marginLeft: "0.2VW", marginTop: "-5.8VW"}}>
+                        <p style={{marginLeft:"0.304VW", fontSize:"0.8VW"}}>ชุด</p> 
+                        <p style={{marginLeft:"0.2vw",marginTop: "-0.5VW",fontSize:"2.4VW"}}>{card_props.cardInfo.Amount}</p>
+                        <p style={{marginLeft:"1.9vw",marginTop: "-3VW",fontSize:"0.8VW"}}>ใบ</p>
+                    </div>
+                </div>
             </Link>  
-            <div style={{display:"flex", justifyContent:"center"}}>
+            <div style={{marginTop:"5.2VW", display:"flex", justifyContent:"center"}}>
                 <div style={{justifyItems:"center",height: "3.4VW", width: "16VW"}}>
                     <div className="" style={{marginTop: "0.2VW", height: "1.5VW", width: "100%"}}>
                         <p className="text-left" style={{fontSize: "0.9VW", display:"flex", justifyContent:"space-between"}}>
@@ -67,20 +80,7 @@ const PackedCardTemplate = (card_props)=>{
                     </div>
                 </div>
             </div>
-            <div>
-{/* 
-            <div className = {`${card_props.cardInfo.Amount === "2" ? "border-t-[#00ff00]"
-                : card_props.cardInfo.Amount === "3" ? "border-t-[#ff0000]"
-                : card_props.cardInfo.Amount === "5" ? "border-t-[#0000ff]"
-                : "border-[#00ffff]"}`} style={{height:"6vw",width:"6vw", marginTop: "-11.25VW",borderTop:"6vw solid", borderRight:"6vw solid transparent"}}></div> */}
-
-                <div className={setAmountClass(card_props.cardInfo.Amount)} style={{height:"6vw",width:"6vw", marginTop: "-11.25VW"}}></div>
-                <div style={{marginLeft: "0.2VW", marginTop: "-5.8VW"}}>
-                    <p style={{fontSize:"0.8VW"}}>ชุด</p> 
-                    <p style={{marginLeft:"0.2vw",marginTop: "-0.5VW",fontSize:"2.4VW"}}>{card_props.cardInfo.Amount}</p>
-                    <p style={{marginLeft:"1.9vw",marginTop: "-3VW",fontSize:"0.8VW"}}>ใบ</p>
-                </div>
-            </div>
+            
         </div>
     );
 }

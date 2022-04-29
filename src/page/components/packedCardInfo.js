@@ -1,10 +1,26 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import { global_url_token } from '../global_url_token';
+import './packedCard.css'
+
+const setAmountClass = (amount) =>{
+    if(amount === "2"){
+        return "amountclass_2"
+    }
+    else if (amount === "3"){
+        return "amountclass_3"
+    }
+    else if (amount === "5"){
+        return "amountclass_5"
+    }
+    else{
+        return ""
+    }
+}
 
 const PackedCardTemplateInfo = (card_props)=>{
 
-    console.log("nice checking500", card_props.cardInfoData)
+    console.log("check PackedCardTemplateInfo", card_props.cardInfoData)
     return (
         <div className="font-prompt" style={{}}>
             <div className="font-prompt">
@@ -34,8 +50,21 @@ const PackedCardTemplateInfo = (card_props)=>{
                         <h1 className="text-center font-light" style={{fontSize: "2.0VW"}}>{card_props.cardInfoData.cardInfo.DrawDate}</h1>
                     </div>
                 </div>
+                <div style={{marginLeft:"6.5vw",marginTop:"-22.1vw"}}>
+                    {/*<div className = {`${card_props.cardInfo.Amount === "2" ? "border-t-[#00ff00]"
+                    : card_props.cardInfo.Amount === "3" ? "border-t-[#ff0000]"
+                    : card_props.cardInfo.Amount === "5" ? "border-t-[#0000ff]"
+                    : "border-[#00ffff]"}`} style={{height:"6vw",width:"6vw", marginTop: "-11.25VW",borderTop:"6vw solid", borderRight:"6vw solid transparent"}}></div> */}
+
+                    <div className={setAmountClass(card_props.cardInfoData.cardInfo.Amount)} style={{height:"16.8vw",width:"16.8vw", borderTopWidth:"16.8vw", borderRightWidth:"16.8vw"}}></div>
+                    <div style={{marginLeft: "0.56VW", marginTop: "-16.24VW"}}>
+                        <p style={{marginLeft: "0.85VW",fontSize:"2.24VW"}}>ชุด</p> 
+                        <p style={{marginLeft:"0.56vw",marginTop: "-1.4VW",fontSize:"6.72VW"}}>{card_props.cardInfoData.cardInfo.Amount}</p>
+                        <p style={{marginLeft:"5.32vw",marginTop: "-8.4VW",fontSize:"2.24VW"}}>ใบ</p>
+                    </div>
+                </div>
             </div>
-            <div style={{marginTop: "0.3VW", marginRight:"3VW"}}>
+            <div style={{marginTop: "14.8VW", marginRight:"3VW"}}>
                 <h1 className="text-right" style={{fontSize: "1.2VW"}}>ร้าน: {card_props.cardInfoData.cardInfo.Storename}</h1>
             </div>
         </div>
