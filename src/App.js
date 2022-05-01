@@ -25,8 +25,8 @@ function App() {
   // const li_default_data = []
   ///////// Test Variables ///////////////
   const li_default_data = [
-    {Number:"000000", DrawDate:"1 เมษายน 2565", Draw: "20", Storename: "สำรีขายหวย", pack:"N"},
-    {Number:"123456", DrawDate:"16 เมษายน 2565", Draw: "10", Storename: "แมวน้ำตัวเล็", Amount:"2", pack:"Y",},
+    {Number:"000000", DrawDate:"1 เมษายน 2565", Draw: "20", Storename: "สำรีขายหวย",Stock:2, pack:"N"},
+    {Number:"123456", DrawDate:"16 เมษายน 2565", Draw: "10", Storename: "แมวน้ำตัวเล็", Amount:"2",Stock:3, pack:"Y",},
     {Number:"878461", DrawDate:"1 เมษายน 2565", Draw: "2", Storename: "สำรีขายไก่", pack:"N"},
     {Number:"484461", DrawDate:"1 เมษายน 2565", Draw: "1", Storename: "ทำไมทำไม", pack:"N"},
     {Number:"090545", DrawDate:"1 เมษายน 2565", Draw: "15", Storename: "ไข่เป็นแฟนได้หมอ", Amount:"3", pack:"Y"},

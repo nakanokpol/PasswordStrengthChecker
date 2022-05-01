@@ -12,7 +12,7 @@ const Navbar = ({toggle}) => {
     : location.pathname === "/singlelotteryinfo" ? "bg-white shadow-sm " 
     : location.pathname === "/packlotteryinfo" ? "bg-white shadow-sm " 
     : location.pathname === "/store" ? "bg-white shadow-sm "
-    :"bg-[#FFE5A3] " }  text-black relative font-prompt `} role='navigation'>
+    :"bg-[#FFE5A3] " }  text-black relative font-prompt `} role='navigation' style={{position:"fixed", width:"100%"}}>
       
       <Link to="/" class="pl-8 text-[#E54E3D]">
         Lottery

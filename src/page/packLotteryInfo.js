@@ -5,7 +5,6 @@ import { useLocation, Link, Routes, Route } from "react-router-dom";
 import './packLotteryInfo.css'
 import { global_url_token } from "./global_url_token";
 
-
 function PackLotteryInfo(props) {
   const cardInfo = useLocation()
   const cardInfoState = cardInfo.state
@@ -16,6 +15,7 @@ function PackLotteryInfo(props) {
   const [selectSet_3, setSelectSet_3] = useState(false)
   const [selectSet_5, setSelectSet_5] = useState(false)
   const [hasSomethingSelected, sethasSomethingSelected] = useState(false)
+  const [amountLeft,setAmountLeft] = useState(cardInfoState.cardInfo.Stock)
 
   console.log("selectSet_2, selectSet_3, selectSet_5 : ",selectSet_2, selectSet_3, selectSet_5)
 
@@ -43,6 +43,7 @@ function PackLotteryInfo(props) {
 
   const sendSelectItemToCart =(event)=>{
     event.preventDefault()
+    setAmountLeft(amountLeft-1)
     const item = cardInfoState.cardInfo
     axios.post(global_url_token.url+'/cart', 
     {token: global_url_token.customer_token,
@@ -99,11 +100,12 @@ function PackLotteryInfo(props) {
                     <p>5 ใบ</p>
                 </button>
               </div>
-              <div className = "justify-items-center flex" style={{marginLeft: "0VW",marginTop: "0VW"}}>
-                  <button disabled={!hasSomethingSelected} className="flex sendSetNumber" style={{marginTop: "2.5VW"}} onClick={sendSelectItemToCart}>
-                      <p>เพิ่มลงตะกร้า</p>
-                  </button>
+              <div style={{width:"91%",marginLeft: "0VW",marginTop: "2VW"}}>
+                <p className="font-light" id={amountLeft===0?"isred":""} style={{textAlign:"right", fontSize:"1vw"}}>จำนวนสินค้าคงเหลือในร้าน: {amountLeft}</p>
               </div>
+              <button disabled={(!hasSomethingSelected) || amountLeft<1} className="sendSetNumber" onClick={sendSelectItemToCart}>
+                  <p>เพิ่มลงตะกร้า</p>
+              </button>
             </form>
           </div>
       </div>

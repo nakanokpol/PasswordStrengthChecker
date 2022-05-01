@@ -55,13 +55,10 @@ function SingleLotteryInfo(props) {
           <p className=" font-light" style={{marginTop: "0VW", marginLeft: "7VW", fontSize: "1.2VW"}}>งวดที่: {cardInfoState.cardInfo.Draw}</p>
           <p className=" font-light" style={{marginTop: "1.5VW", marginLeft: "7VW", fontSize: "1.2VW"}}>ร้าน: {cardInfoState.cardInfo.Storename}</p>
           <p className=" font-light flex" id={amountLeft===0?"isred":""} style={{marginTop: "3.1VW", marginRight: "11.5VW", fontSize: "1VW",justifyContent:"right"}}>จำนวนสินค้าคงเหลือในร้าน: {amountLeft}</p>
-          <div className = "justify-items-center flex" style={{marginLeft: "7VW",marginTop: "0VW"}}>
-            {/* <Link to="/"> */}
-            
+          <div className = "flex" style={{marginLeft: "7VW",marginTop: "0VW", justifyItems:"s"}}>
             <button id="sendSetNumber" className="flex sendSetNumber" disabled={amountLeft===0} style={{marginTop: "0VW"}} onClick={sendSelectItemToCart}>
                 <p>เพิ่มลงตะกร้า</p>
             </button>
-            {/* </Link> */}
           </div>
       </div>
     </div>
