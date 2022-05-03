@@ -67,7 +67,7 @@ const PackedCardTemplate = (card_props)=>{
                 <div style={{justifyItems:"center",height: "3.4VW", width: "16VW"}}>
                     <div className="" style={{marginTop: "0.2VW", height: "1.5VW", width: "100%"}}>
                         <p className="text-left" style={{fontSize: "0.9VW", display:"flex", justifyContent:"space-between"}}>
-                            <Link to="/store">
+                            <Link to="/store" state= {{Storename: card_props.cardInfo.Storename}}>
                                 <p style={{marginTop: "0.45VW"}}>
                                     {card_props.cardInfo.Storename}
                                 </p>

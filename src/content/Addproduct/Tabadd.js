@@ -10,28 +10,29 @@ function Tabadd() {
     setTabState(i);
     //  console.log("click");
   };
+ 
 
   return (
       
-    <div class="m-4 xl:w-[530px] lg:w-[430px] sm:w-[400px]  min-w-[300px]">        
+    <div class="w-full">        
       <div class="grid grid-cols-2 gap-4">
         <div
           class={`text-center ${
             tabState === 1 ? "border-b-4 border-[#E54E3D]" : " border-0"
           }`}
         >
-          <a class=" cursor-pointer" role="tab" onClick={() => clickTab(1)}>
+          <div class=" cursor-pointer" role="tab" onClick={() => clickTab(1)}>
             สลากเดี่ยว
-          </a>
+          </div>
         </div>
         <div
           class={`text-center ${
             tabState === 2 ? "border-b-4 border-[#E54E3D]" : " border-0"
           }`}
         >
-          <a class="cursor-pointer" role="tab" onClick={() => clickTab(2)}>
+          <div class="cursor-pointer" role="tab" onClick={() => clickTab(2)}>
             สลากชุด
-          </a>
+          </div>
         </div>
       </div>
           <div class={

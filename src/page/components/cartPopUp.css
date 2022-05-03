@@ -17,3 +17,34 @@
     background-color: white;
 }
 
+.button_{
+    vertical-align: top;
+    margin-right: 0VW;
+    height: 100%;
+    width: 10vw;
+    /* inline-size: min-content; */
+    padding: 1%;
+    border-radius: 0.2vw;
+    border: 0.15vw solid #E54E3D;
+    background-color: #ffffff;
+    text-align: center;
+    font-size: 0.8vw;
+    font-weight: 400;
+    color:#000000;
+}
+
+.button_:hover{
+    vertical-align: top;
+    margin-right: 0VW;
+    height: 100%;
+    width: 10vw;
+    /* inline-size: min-content; */
+    padding: 1%;
+    border-radius: 0.2vw;
+    border: 0.15vw solid #E54E3D;
+    background-color: #E54E3D;
+    text-align: center;
+    font-size: 0.8vw;
+    font-weight: 600;
+    color:#ffffff;
+}

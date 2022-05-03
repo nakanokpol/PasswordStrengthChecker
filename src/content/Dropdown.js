@@ -5,7 +5,7 @@ import { global_url_token } from '../page/global_url_token'
 function Dropdown({isOpen,toggle}) {
   return (
     <div class={isOpen ?"grid grid-rows-4 text-center font-prompt items-center bg-[#FFE5A3]":"hidden"} onClick={toggle}>
-       <Link class="p-4 hover:bg-[#E54E3D] hover:text-white" to="/">
+       <Link class="p-4 hover:bg-[#E54E3D] hover:text-white" to="/home">
           หน้าหลัก
         </Link>
         <Link class="p-4 hover:bg-[#E54E3D] hover:text-white " to="/cart">

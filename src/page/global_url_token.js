@@ -1,8 +1,8 @@
 const global_url_token = {
-    url: "http://265f-2403-6200-88a4-4c62-c81f-324d-a5c2-fa5d.ngrok.io",
-    admin_token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMjQ5MzgxLCJleHAiOjE2NTEyODUzODF9.3LEMV0z4xw2bygYdqXI-z1r-072C7GThn4gGYtJIWMM",
-    customer_token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMjQ5NDQ5LCJleHAiOjE2NTEyODU0NDl9.IgS6_1F4X9xQzfRWLi_hzOhGzki8Xg3EEYK2udDYgfo",
-    seller_token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTI0OTQyMywiZXhwIjoxNjUxMjg1NDIzfQ.AM9tOsI7b1iIs-g3MoJV3LUlImr5JW3zFfysLx_GzwA"
+    url: "http://5e32-2403-6200-88a4-4c62-ad67-2c72-81c8-4445.ngrok.io",
+    admin_token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTgxMzQ4LCJleHAiOjE2NTE2MTczNDh9.OvH85V6H9wnQp4nRPXk2R9RoqRlg8jOM3OILZb3gaJ8",
+    customer_token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxNTgxNDA4LCJleHAiOjE2NTE2MTc0MDh9.x87k9EafH-WnOkAdDHWHAnNVvmSCNmqduNrm2ZjNs98",
+    seller_token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTU4MTM4MywiZXhwIjoxNjUxNjE3MzgzfQ.Ep4i2AJvsVRklO-sHvbcLzu1V4i1fFckzL0OqLW0zKU"
 };
 
 export {global_url_token};

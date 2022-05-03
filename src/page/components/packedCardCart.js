@@ -1,9 +1,27 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import { global_url_token } from '../global_url_token';
+import './packedCard.css'
 
 const PackedCardTemplateCart = (card_props)=>{
     console.log("PackedCardTemplateCart", card_props)
+
+    const {Number_lottery, DrawDate, PackAmount} = card_props
+
+    const setAmountClass = (amount) =>{
+        if(amount === "2"){
+            return "amountclass_2"
+        }
+        else if (amount === "3"){
+            return "amountclass_3"
+        }
+        else if (amount === "5"){
+            return "amountclass_5"
+        }
+        else{
+            return ""
+        }
+    }
 
     return (
         <div className="font-prompt" style={{height: "8.5VW", width: "17VW"}}>
@@ -27,11 +45,17 @@ const PackedCardTemplateCart = (card_props)=>{
                     <h1 className="text-left font-normal" style={{fontSize: "0.55VW"}}>-</h1>
                 </div>
                 <div style={{marginLeft: "6.545VW", marginTop: "-5.89VW",height: "1.482VW", width: "8.5VW"}}>
-                    <h1 className="text-center font-normal" style={{fontSize: "1.2VW", letterSpacing:"0.35VW"}}>{card_props.cardInfo.Number_lottery}</h1>
+                    <h1 className="text-center font-normal" style={{fontSize: "1.2VW", letterSpacing:"0.35VW"}}>{Number_lottery}</h1>
                 </div>
                 <div style={{marginLeft: "6.545VW", marginTop: "0.9VW",height: "1.482VW", width: "8.5VW"}}>
-                    <h1 className="text-center font-light" style={{fontSize: "0.8VW"}}>{card_props.cardInfo.DrawDate}</h1>
+                    <h1 className="text-center font-light" style={{fontSize: "0.8VW"}}>{DrawDate}</h1>
                 </div>
+            </div>
+            <div className={setAmountClass(PackAmount)} style={{height:"6vw",width:"6vw", marginTop: "-7.9VW"}}></div>
+            <div style={{marginLeft: "0.2VW", marginTop: "-5.8VW"}}>
+                <p style={{marginLeft:"0.304VW", fontSize:"0.8VW"}}>ชุด</p> 
+                <p style={{marginLeft:"0.2vw",marginTop: "-0.5VW",fontSize:"2.4VW"}}>{PackAmount}</p>
+                <p style={{marginLeft:"1.9vw",marginTop: "-3VW",fontSize:"0.8VW"}}>ใบ</p>
             </div>
         </div>
     );

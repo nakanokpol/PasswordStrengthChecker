@@ -9,11 +9,11 @@ import axios from "axios";
 import { global_url_token } from "./global_url_token";
 
 function Account() {
-  const [toggleState, setToggleState] = useState(1);
-  const [dataProfile, setDataprofile] = useState();
+  
+  const [toggleState, setToggleState] = useState(1);  
   const [editMode, setEditMode] = useState(false);
   const [firstName, setFirstName] = useState();
-  const [birthday, setBirthday] = useState();
+  const [birthday, setBirthday] = useState("");
   const [lastName, setlastName] = useState();
   const [number, setnumber] = useState();
   const [mail, setmail] = useState();
@@ -24,6 +24,7 @@ function Account() {
   const [road, setRoad] = useState();
   const [zipcode, setZipcode] = useState();
   const [province, setProvince] = useState();
+  const [dataTran, setdataTran] = useState([]);
   
   const changeTofalse = () => {
     setEditMode(false);
@@ -45,7 +46,8 @@ function Account() {
 
       .then(function (response) {
         
-        console.log(response.data.customerAccount.Address.Road);
+        console.log(response.data);
+        if(response.data.status =="200OK"){
         setFirstName(response.data.customerAccount.Firstname)
         setlastName(response.data.customerAccount.Lastname)
         setnumber(response.data.customerAccount.Tel)
@@ -58,6 +60,27 @@ function Account() {
         setDistrict(response.data.customerAccount.Address.District)
         setProvince(response.data.customerAccount.Address.Province)
         setZipcode(response.data.customerAccount.Address.ZipCode)
+        }
+       
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  function getOrder() {
+
+    axios
+      .get(
+        global_url_token.url+"/getTransaction/" + global_url_token.customer_token
+      )
+
+      .then(function (response) {
+        
+        console.log(response.data);
+        if(response.data.status =="200OK"){
+        setdataTran(response.data.orderTransaction);
+       }
          
        
       })
@@ -66,25 +89,21 @@ function Account() {
       });
   }
 
-  
-
-
- 
 
   useEffect(() => {
     getProfile();
+    getOrder();
   }, []);
 
   return (
-    <>
-    
-      <div class="h-screen flex justify-center  bg-[#FFE5A3] font-prompt">
+    <div className="h-screen bg-[#FFE5A3]">
+    <div>
+    <div class="h-16"/>
+      <div class=" flex justify-center font-prompt h-max">
         <div
-          class="flex flex-col p-8 m-8 bg-white  xl:w-[820px] 
-     md:w-[700px] min-w-[650px] h-[800px]    shadow-xl "
+          class="flex flex-col p-8 m-8 bg-white min-w-[44.25%] w-[97%] 2xl:w-[44.25%] xl:w-[53.1%] lg:w-[66.375%] md:w-[88.5%] sm:w-[95%] xs:w-[97%] h-[100%] shadow-xl rounded-xl"
         >
-         
-          <h1 class="text-xl text-[#E54E3D] font-black ml-6">บัญชีของคุณ</h1>
+          <h1 class="text-xl text-[#E54E3D] font-black">บัญชีของคุณ</h1>
           <Header
             name={"richman101"}
             undername={"กรุงเทพมหานคร"}
@@ -117,9 +136,9 @@ function Account() {
                 <p class="pt-2 pl-4">ประวัติการสั่งซื้อ</p>
               </div>
             </div>
-            <div class="p-7 ">
-              <div class={toggleState === 1 ? "flex" : "hidden"}>
-                <div>
+            <div class="p-7" style={{width:"100%"}}>
+              <div class={toggleState === 1 ? "flex" : "hidden"} style={{}}>
+                <div className="" style={{width:"100%"}}>
                   {editMode ? (
                     <Editprofile
                       // data={dataProfile}
@@ -156,13 +175,13 @@ function Account() {
                     />
                   )} 
                 </div>
-
                 <div
                   class={editMode === false ? "" : "hidden"}
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", justifyItems:"right"}}
                   onClick={() => setEditMode(true)}
                 >
-                  <svg
+                  <div style={{}}>
+                  <svg 
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6"
                     fill="none"
@@ -175,17 +194,18 @@ function Account() {
                       stroke-linejoin="round"
                       d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
                     />
-                  </svg>
+                  </svg></div>
                 </div>
               </div>
               <div class={toggleState === 2 ? "" : "hidden"}>
-                <Checkorder />
+                <Checkorder checkTran={dataTran}/>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+      </div>
+    </div>
   );
 }
 

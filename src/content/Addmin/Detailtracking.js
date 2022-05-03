@@ -1,8 +1,8 @@
 import React, { useState} from "react";
-import { global_url_token } from "../../page/global_url_token";
 
 function Detailtracking({ setModalOn, data, id}) {
   const [text, setText] = useState(null);
+ 
   
   const handleOKClick = () => {
     // e.preventDefault();
@@ -11,11 +11,14 @@ function Detailtracking({ setModalOn, data, id}) {
    
   };
   const handleCancelClick = () => {
+    // e.preventDefault();
+
     setModalOn(false);
+   
   };
 
   return (
-    <div class="    fixed inset-0 z-50   ">
+    <div class="    fixed inset-0 z-50 bg-black  bg-opacity-50  ">
       <div class="flex h-screen justify-center items-center ">
         <div class="relative rounded-lg shadow bg-[#FFF8E6] w-[550px] border">
           {/* Modal header */}
@@ -71,8 +74,12 @@ function Detailtracking({ setModalOn, data, id}) {
                       </div>
                       </>
                     ))}
+                    
                   </div>
                 </div>
+                
+                
+                
                 
                 <div class="grid grid-cols-2 gap-3 ">
                   <div class="font-semibold text-[#E54E3D]">
@@ -83,6 +90,8 @@ function Detailtracking({ setModalOn, data, id}) {
                   </div>
                 </div>
                 
+                
+            
                 <div class="grid grid-cols-2 gap-3  mt-2">
                   <div class="font-semibold text-[#E54E3D]">
                     <h5>ที่อยู่</h5>
@@ -126,6 +135,8 @@ function Detailtracking({ setModalOn, data, id}) {
           
           <div class="p-6 space-x-2 rounded-b border-t border-[#E54E3D]" first-lette>
            
+
+            
           </div>
         </div>
       </div>

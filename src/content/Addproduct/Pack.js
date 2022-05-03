@@ -31,8 +31,7 @@ function Pack() {
   const dDate = day + " " + m + " " + y;
 
   const [lottery, setLottery] = useState(() => {
-    const saveLotto = localStorage.getItem("lotteryPack");
-
+    const saveLotto = localStorage.getItem("lotterypack");
     if (saveLotto) {
       return JSON.parse(saveLotto);
     } else {
@@ -136,7 +135,7 @@ function Pack() {
   ];
 
   useEffect(() => {
-    localStorage.setItem("lotteryPacK", JSON.stringify(lottery));
+    localStorage.setItem("lotterypack", JSON.stringify(lottery));
   }, [lottery]);
 
   function handleInput(e) {
@@ -224,7 +223,7 @@ function Pack() {
     setLottery(removeItem);
   }
 
-  console.log(lottery);
+  // console.log(lottery);
 
   return (
     <div>
@@ -300,35 +299,6 @@ function Pack() {
                   ))}
                 </div>
 
-                {/* { [...Array(a)].map((e, i) => 
-                 <div class="flex justify-between my-3" id={`${i}`}>
-                 <h5 class="pl-2 p-2">งวดที่</h5>
-                 <input
-                   placeholder="12"
-                   maxLength={2}
-                   type="text"
-                   pattern="[0-9]{2}"                    
-                   value={draw}                    
-                   onChange={(event) => setDraw(event.target.value)}
-                   class="pl-2 p-2 rounded-md w-[30px] text-center"
-                   required
-                 />
-                 {i}
-                 <h5 class="pl-2 p-2">ชุดที่</h5>
-                 <input
-                   placeholder="12"
-                   maxLength={2}
-                   type="text"
-                   pattern="[0-9]{2}"
-                   value={pack}                    
-                   onChange={(event) => setPack(event.target.value)}
-                   class="pl-2 p-2 rounded-md w-[30px] text-center"
-                   required
-                 />
-               </div>
-            
-                                 
-                  )}  */}
               </div>
 
               <button
@@ -379,26 +349,26 @@ function Pack() {
                       <div class="flex justify-between my-2">
                         <h5 class="pl-2 p-2">ชุดที่</h5>
                         <h5 class="pl-2 p-2 bg-[#FFF8E6] w-[30px] rounded-md text-center">
-                          {lotto.lot.split("|")[0]}
+                          {lotto.lot.split("|")[i]}
                         </h5>
                       </div>
 
                       <div class="flex  justify-between my-2">
                         <h5 class="pl-2 p-2">งวดที่</h5>
                         <h5 class="pl-2 p-2 bg-[#FFF8E6] w-[30px] rounded-md text-center">
-                          {lotto.draw.split("|")[0]}
+                          {lotto.draw.split("|")[i]}
                         </h5>
                       </div>
                     </div>
                   ))}
                 </div>
-
-                <button
+                
+                {/* <button
                   onClick={() => handleDelete(lotto.id)}
                   class="font-prompt text-sm rounded-md p-2 border border-[#ee6657] text-[#ee6657] hover:bg-[#ff2020] hover:text-white"
                 >
                   ลบ
-                </button>
+                </button> */}
               </div>
             </div>
           ))}

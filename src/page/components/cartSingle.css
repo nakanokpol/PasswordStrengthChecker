@@ -1,0 +1,8 @@
+.remove-button{
+    color: #aaaaaa;
+    font-size:1.2rem;
+}
+.remove-button[disabled]{
+    color: rgba(0,0,0,0);
+    font-size:1.2rem;
+}

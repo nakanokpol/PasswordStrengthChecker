@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import DetailPaymaent from "./DetailPaymaent";
-import { global_url_token } from "../../page/global_url_token";
 // import Editcheckpay from './Editcheckpay';
 
-function CheckPayment({ data }) {
+function CheckPayment({ data,checkData }) {
   // const[approvePay,setApprove]
   const [modalOn, setModalOn] = useState(false);
-
+  
   const [approve, setApprove] = useState(() => {
     const saveStatus = localStorage.getItem("Paymenttus");
 
@@ -85,7 +84,13 @@ function CheckPayment({ data }) {
 
   return (
     <>
-      <h1 class="mb-5  text-2xl font-semibold	 ">ยืนยันการชำระ</h1>
+      <div class="grid grid-cols-2  ">
+      <h1 class="mb-5  text-2xl font-semibold	 ">
+         ยืนยันการชำระ
+      </h1>
+      
+      <h2 class="m-1 ml-5  text-xl justify-self-end">ทั้งหมด {data.length} รายการ  </h2>
+      </div>
 
       <div class=" flex justify-center items-center bg-white  font-prompt">
         <div class="overflow-x-auto  xl:w-[560px]  xl:h-[450px] md:w-[450px] sm:w-[400px]">
@@ -109,8 +114,9 @@ function CheckPayment({ data }) {
                 </th> */}
               </tr>
             </thead>
-
+          
             <tbody class="divide-y border-b border-t border-[#E54E3D]">
+             
               {data.map((data) => (
                 <tr class=" border-b  border-[#E54E3D]">
                   <td class="w-30 p-3 text-sm font-light whitespace-nowrap text-center">
@@ -159,6 +165,10 @@ function CheckPayment({ data }) {
               ))}
             </tbody>
           </table>
+
+         {checkData==false&& <div class="w-full flex justify-center  p-5">
+            <h1 class="text-center">ไม่มีรายการต้องตรวจสอบ</h1>
+            </div>}
 
           {modalOn && (
             <DetailPaymaent

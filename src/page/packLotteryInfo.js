@@ -75,10 +75,11 @@ function PackLotteryInfo(props) {
 
   return (
     <div className = "h-screen bg-white viewInfo font-prompt" style={{display: "flex"}}>
-      <div className = "" style={{width:"57%",height:"100%" , backgroundColor:"#FFE5A3"}}>
+      {/* <div className="h-16"/> */}
+      <div className = "" style={{width:"57%",height:"100%", paddingTop:"3vw" , backgroundColor:"#FFE5A3"}}>
         <PackedCardTemplateInfo cardInfoData={cardInfoState}/>
       </div>
-      <div className = "justify-items-center" style={{width: "43%", height:"100%"}}>
+      <div className = "justify-items-center" style={{width: "43%", height:"100%", paddingTop:"1.5"}}>
         <div style={{marginTop: "10.5VW", marginLeft: "5VW", height: "3.5VW", width: "12VW",borderRadius: "5VW", backgroundColor:"#D4FAAF"}}>
           <h1 className="text-center font-semibold" style={{fontSize: "2.2VW"}}>สลากชุด</h1>
         </div>

@@ -5,18 +5,13 @@ function DetailSeller({ setModalOn, data, setApprove, approve, id, setState }) {
   const [text, setText] = useState(null);
   
   function putSeller(e) {
-    axios
-      .put(
-        global_url_token.url+"/updateSellerIdentity/",
+    axios.put(global_url_token.url+"/updateSellerIdentity",
         {
-          token:global_url_token.admin_token,
+          token: global_url_token.admin_token,
           approve: e,
-          sellerID: id,
-          
+          sellerID: id
         }
-      )
-
-      .then(function (response) {
+      ).then(function (response) {
         console.log(response);
         // console.log(data)
       })
@@ -27,12 +22,12 @@ function DetailSeller({ setModalOn, data, setApprove, approve, id, setState }) {
 
   const handleOKClick = () => {
     // e.preventDefault();
-    putSeller("yes")
+    putSeller("Yes")
     setModalOn(false);
     setApprove([
       ...approve,
       {
-        approve: "yes",
+        approve: "Yes",
         comment: `${text}`,
         sellerID: id,
       },
@@ -45,7 +40,7 @@ function DetailSeller({ setModalOn, data, setApprove, approve, id, setState }) {
     setApprove([
       ...approve,
       {
-        approve: "no",
+        approve: "No",
         comment: `${text}`,
         sellerID: id,
       },
@@ -53,7 +48,7 @@ function DetailSeller({ setModalOn, data, setApprove, approve, id, setState }) {
   };
 
   return (
-    <div class="    fixed inset-0 z-50   ">
+    <div class="    fixed inset-0 z-50  bg-black  bg-opacity-50 ">
       <div class="flex h-screen justify-center items-center ">
         <div class="relative rounded-lg shadow bg-[#FFF8E6] w-[550px] border">
           {/* Modal header */}

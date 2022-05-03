@@ -100,27 +100,27 @@ const FormComponent =(props)=>{
     // },[title,amount])
 
     return(
-        <div className="font-prompt" style={{paddingTop: "60px"}}>
+        <div className="font-prompt bg-white" style={{paddingTop: "40px",width:"100%", paddingBottom:"15px"}}>
             <form onSubmit={saveInputItem}>
-                <div>
-                    <div style={{marginLeft: "6VW", marginRight: "6VW"}}>
-                        <div>
-                            <input className="searchBox" key="f01" id="f1" type="text" minlength="0" maxLength="1" onChange={updateInputIndex_1} value={val_index_1}></input>
-                            <input className="searchBox" key="f02" id="f2" type="text" minlength="0" maxLength="1" onChange={updateInputIndex_2} value={val_index_2}></input>
-                            <input className="searchBox" key="f03" id="f3" type="text" minlength="0" maxLength="1" onChange={updateInputIndex_3} value={val_index_3}></input>
-                            <input className="searchBox" key="f04" id="f4" type="text" minlength="0" maxLength="1" onChange={updateInputIndex_4} value={val_index_4}></input>
-                            <input className="searchBox" key="f05" id="f5" type="text" minlength="0" maxLength="1" onChange={updateInputIndex_5} value={val_index_5}></input>
-                            <input className="searchBox" key="f06" id="f6" type="text" minlength="0" maxLength="1" onChange={updateInputIndex_6} value={val_index_6}></input>
+                <div style={{marginLeft: "6VW", marginRight: "6VW", display:"inline-block", width:"100%"}}>
+                    <div>
+                        <input className="searchBox" key="f01" id="f1" type="text" minlength="0" maxLength="1" onChange={updateInputIndex_1} value={val_index_1}></input>
+                        <input className="searchBox" key="f02" id="f2" type="text" minlength="0" maxLength="1" onChange={updateInputIndex_2} value={val_index_2}></input>
+                        <input className="searchBox" key="f03" id="f3" type="text" minlength="0" maxLength="1" onChange={updateInputIndex_3} value={val_index_3}></input>
+                        <input className="searchBox" key="f04" id="f4" type="text" minlength="0" maxLength="1" onChange={updateInputIndex_4} value={val_index_4}></input>
+                        <input className="searchBox" key="f05" id="f5" type="text" minlength="0" maxLength="1" onChange={updateInputIndex_5} value={val_index_5}></input>
+                        <input className="searchBox" key="f06" id="f6" type="text" minlength="0" maxLength="1" onChange={updateInputIndex_6} value={val_index_6}></input>
+                    </div>
+                    <div className="submit_button">
+                        <button className="font-extralight" type="submit">ค้นหา</button>
+                    </div>
+                    <Link to ="/random">
+                        <div className="go_random_button">
+                            <button type="go_random"><u>ไปยังระบบสุ่ม</u></button>
                         </div>
-                        <div className="submit_button">
-                            <button className="font-extralight" type="submit">ค้นหา</button>
-                        </div>
-                        <Link to ="/random">
-                            <div className="go_random_button">
-                                <button type="go_random"><u>ไปยังระบบสุ่ม</u></button>
-                            </div>
-                        </Link>
-                        <div className="result_for">
+                    </Link>
+                    <div className="result_for flex" style={{justifyContent:"end"}}>
+                        <div style={{marginRight: "12VW"}}>
                             <p>ผลการค้นหาของหมายเลข: {resultFor}</p>
                         </div>
                     </div>

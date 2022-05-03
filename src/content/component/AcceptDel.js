@@ -1,5 +1,4 @@
 import React from 'react'
-import { global_url_token } from '../../page/global_url_token';
 
 function AcceptDel({onShowing,text}) {
     const handleOKClick = () => {
@@ -14,7 +13,7 @@ function AcceptDel({onShowing,text}) {
       };
   return (
     <div>
-        <div class="    fixed inset-0 z-50   ">
+        <div class="    fixed inset-0 z-50 bg-black  bg-opacity-50 ">
       <div class="flex h-screen justify-center items-center ">
         <div class="relative rounded-lg shadow bg-[#FFF8E6] w-[500px] border">
           {/* Modal header */}

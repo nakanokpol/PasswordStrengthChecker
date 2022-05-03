@@ -14,9 +14,7 @@ function Editprofile(props) {
   const [zipcodeE, setZipcodeE] = useState(props.zipcode);
   const [provinceE, setProvinceE] = useState(props.province);
   const [soiE, setSoiE] = useState(props.soi);
-  // const token =
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMDQ0NzU3LCJleHAiOjE2NTEwNTU1NTd9.mJS7Hk7UCCpq2RIXv3-sdZPOdvLd8KiQp3pqyoSChmQ";
-  // const [editprofile, setEditprofile] = useState();
+ 
 
   function putEdit() {
     axios
@@ -86,12 +84,12 @@ function Editprofile(props) {
           </div>
         </div>
 
-       <div class="grid grid-cols-2 gap-7">
+       <div class="grid grid-cols-2 gap-7 ">
           <div class="font-semibold text-[#E54E3D]">
             <h5>ชื่อ</h5>
           </div>
           <input
-            class="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
+            class="shadow appearance-none border rounded py-2 px-3 text-grey-darker w-[200px]"
             value={firstNameE}
             onChange={(event) => setFirstNameE(event.target.value)}
             required="required"
@@ -102,7 +100,7 @@ function Editprofile(props) {
             <h5>นามสกุล</h5>
           </div>
           <input
-            class="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
+            class="shadow appearance-none border rounded py-2 px-3 text-grey-darker w-[200px]"
             value={lastNameE}
             onChange={(event) => setlastNameE(event.target.value)}
             required="required"
@@ -114,7 +112,7 @@ function Editprofile(props) {
           </div>
           <div class="">
             <input
-              class="shadow appearance-none border rounded py-2 px-3 text-grey-darker "
+              class="shadow appearance-none border rounded py-2 px-3 text-grey-darker w-[200px] "
               value={numberE}
               pattern="[0-9]{10}"
               onChange={(event) => setnumberE(event.target.value)}
@@ -126,7 +124,7 @@ function Editprofile(props) {
           <div class="font-semibold text-[#E54E3D]">
             <h5>วัน/เดือน/ปีเกิด</h5>
           </div>
-          <div class="">{props.birthday}</div>
+          <div class="">{props.birthday.slice(6,8)+"/"+props.birthday.slice(4,6)+"/"+props.birthday.slice(0,4)}</div>
         </div>
 
         <div class="grid grid-cols-2 gap-7 mt-2">
@@ -135,7 +133,7 @@ function Editprofile(props) {
           </div>
           <div class="">
             <input
-              class="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
+              class="shadow appearance-none border rounded py-2 px-3 text-grey-darker w-[200px]"
               value={mailE}
               type="email"
               onChange={(event) => setmailE(event.target.value)}
@@ -153,7 +151,7 @@ function Editprofile(props) {
             <div class="grid grid-cols-2 gap-2 mt-2  ">
               <p class="font-semibold">บ้านเลขที่</p>
               <input
-                class="shadow appearance-none border rounded py-2 px-3 text-grey-darker h-[40px]"
+                class="shadow appearance-none border rounded py-2 px-3 text-grey-darker w-[200px]"
                 value={homenoE}
                 // pattern="[0-9/]"
                 onChange={(event) => setHomenoE(event.target.value)}
@@ -162,7 +160,7 @@ function Editprofile(props) {
             <div class="grid grid-cols-2 gap-2 mt-2 ">
               <p class="font-semibold">ซอย</p>
               <input
-                class="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
+                class="shadow appearance-none border rounded py-2 px-3 text-grey-darker w-[200px]"
                 value={soiE}
                 onChange={(event) => setSoiE(event.target.value)}
               />
@@ -170,7 +168,7 @@ function Editprofile(props) {
             <div class="grid grid-cols-2 gap-2 mt-2 ">
               <p class="font-semibold">ถนน</p>
               <input
-                class="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
+                class="shadow appearance-none border rounded py-2 px-3 text-grey-darker w-[200px]"
                 value={roadE}
                 onChange={(event) => setRoadE(event.target.value)}
               />
@@ -178,7 +176,7 @@ function Editprofile(props) {
             <div class="grid grid-cols-2 gap-2 mt-2 ">
               <p class="font-semibold">แขวง/ตำบล</p>
               <input
-                class="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
+                class="shadow appearance-none border rounded py-2 px-3 text-grey-darker w-[200px]"
                 value={subdistrictE}
                 onChange={(event) => setsubDistrictE(event.target.value)}
               />
@@ -186,7 +184,7 @@ function Editprofile(props) {
             <div class="grid grid-cols-2 gap-2 mt-2 ">
               <p class="font-semibold">เขต/อำเภอ</p>
               <input
-                class="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
+                class="shadow appearance-none border rounded py-2 px-3 text-grey-darker w-[200px]"
                 value={districtE}
                 onChange={(event) => setDistrictE(event.target.value)}
               />
@@ -194,7 +192,7 @@ function Editprofile(props) {
             <div class="grid grid-cols-2 gap-2 mt-2 ">
               <p class="font-semibold">จังหวัด</p>
               <input
-                class="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
+                class="shadow appearance-none border rounded py-2 px-3 text-grey-darker w-[200px]"
                 value={provinceE}
                 onChange={(event) => setProvinceE(event.target.value)}
               />
@@ -202,7 +200,7 @@ function Editprofile(props) {
             <div class="grid grid-cols-2 gap-2 mt-2 ">
               <p class="font-semibold">รหัสไปรษณีย์</p>
               <input
-                class="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
+                class="shadow appearance-none border rounded py-2 px-3 text-grey-darker w-[200px]"
                 value={zipcodeE}
                 pattern="[0-9]{5}"
                 onChange={(event) => setZipcodeE(event.target.value)}

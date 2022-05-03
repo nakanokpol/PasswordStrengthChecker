@@ -15,6 +15,7 @@ const SlipPayment = (card_props)=>{
     console.log("paymentInfoState",paymentInfoState)
     return (
         <div className="h-screen" style={{backgroundColor:"#FFE5A3"}}>
+            <div className="h-16"/>
             <div className="font-prompt flex justify-center">
                 <div class="flex flex-col p-8 m-8 bg-white rounded-xl shadow-xl min-w-[44.25%] w-[97%] 2xl:w-[44.25%] xl:w-[53.1%] lg:w-[66.375%] md:w-[88.5%] sm:w-[95%] xs:w-[97%]" style={{}}>
                     <div>
@@ -32,7 +33,7 @@ const SlipPayment = (card_props)=>{
                     </div>
                     <div>
                         <form>
-                            <Link to="/">
+                            <Link to="/home">
                                 <button id="goToPaymentMethod" className="flex goToPaymentMethod">
                                     <p>ดำเนินการชำระเงิน</p>
                                 </button>

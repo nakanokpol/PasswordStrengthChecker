@@ -2,7 +2,6 @@ import React,{useState} from 'react'
 import axios from 'axios';
 import { global_url_token } from '../../page/global_url_token';
 
-
 function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,money,customerID}) {
     
   function putPayment(oid,app,money) {
@@ -10,7 +9,7 @@ function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,mo
       .put(
         global_url_token.url+"/updateOrderPayment/",
         {
-          token: global_url_token.admin_token,
+          token:global_url_token.admin_token,
           orderID: id,
           customerID: customerID,
           approve: app,
@@ -61,13 +60,13 @@ function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,mo
     };
   
     return (
-      <div class="    fixed inset-0 z-50   ">
+      <div class=" fixed inset-0 z-50 bg-black  bg-opacity-50">
         <div class="flex h-screen justify-center items-center ">
           <div class="relative rounded-lg shadow bg-[#FFF8E6] w-[550px] border">
             {/* Modal header */}
             <div class="flex justify-between items-start p-5 rounded-t border-b border-[#E54E3D]">
               <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl ">
-                หลักฐานการชำระ {customerID}
+                หลักฐานการชำระ {customerID} {id}
               </h3>
               <button
                 type="button"

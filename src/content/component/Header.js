@@ -1,5 +1,4 @@
 import React from "react";
-import { global_url_token } from "../../page/global_url_token";
 
 function Header({picture,name,undername}) {
   return (

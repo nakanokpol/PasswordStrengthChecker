@@ -42,10 +42,10 @@ function SingleLotteryInfo(props) {
 
   return (
     <div className = "h-screen bg-white viewInfo font-prompt" style={{display: "flex"}}>
-      <div className = "" style={{width:"57%",height:"100%" , backgroundColor:"#FFE5A3"}}>
+      <div className = "" style={{width:"57%",height:"100%", paddingTop:"vw" , backgroundColor:"#FFE5A3"}}>
         <SingleCardTemplateInfo cardInfoData={cardInfoState}/>
       </div>
-      <div className = "justify-items-center" style={{width: "43%", height:"100%"}}>
+      <div className = "justify-items-center" style={{width: "43%", height:"100%", marginTop:"3vw"}}>
         <div style={{marginTop: "10.5VW", marginLeft: "6VW", height: "3.5VW", width: "12VW",borderRadius: "5VW", backgroundColor:"#D3FAFA"}}>
           <h1 className="text-center font-semibold" style={{fontSize: "2.2VW"}}>สลากเดี่ยว</h1>
         </div>

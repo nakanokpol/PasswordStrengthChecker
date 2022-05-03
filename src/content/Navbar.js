@@ -8,13 +8,13 @@ const Navbar = ({toggle}) => {
   return (
     // white navbar - home ,buy , store
     <nav class={`flex justify-between items-center h-16 
-    ${location.pathname === "/" ? "bg-white shadow-sm "
+    ${location.pathname === "/home" ? "bg-white shadow-sm "
     : location.pathname === "/singlelotteryinfo" ? "bg-white shadow-sm " 
     : location.pathname === "/packlotteryinfo" ? "bg-white shadow-sm " 
     : location.pathname === "/store" ? "bg-white shadow-sm "
     :"bg-[#FFE5A3] " }  text-black relative font-prompt `} role='navigation' style={{position:"fixed", width:"100%"}}>
       
-      <Link to="/" class="pl-8 text-[#E54E3D]">
+      <Link to="/home" class="pl-8 text-[#E54E3D]">
         Lottery
       </Link>      
       <div class="px-4 cusor-ponter md:hidden" onClick={toggle}>
@@ -34,7 +34,7 @@ const Navbar = ({toggle}) => {
         </svg>
       </div>
       <div class="pr-8  md:block hidden ">
-        <Link class="p-4 hover:text-[#E54E3D]" to="/">
+        <Link class="p-4 hover:text-[#E54E3D]" to="/home">
           หน้าหลัก
         </Link>
         <Link class="p-4 hover:text-[#E54E3D] " to="/cart">

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { global_url_token } from "../../page/global_url_token";
 
-function Single() {
+function Single({tab}) {
   const d = new Date();
   const month = [
     "มกราคม",
@@ -49,14 +49,15 @@ function Single() {
   useEffect(() => {
     localStorage.setItem("lottery", JSON.stringify(lottery));
   }, [lottery]);
+  
 
   function handleInput(e) {
     setNumber(e.target.value);
   }
 
-  function putPayment() {
+  function putSinglelottory() {
     axios
-      .post(global_url_token.url+"/addSingleLottery", {
+      .post(global_url_token.url + "/addSingleLottery", {
         token: global_url_token.seller_token,
         lotteryList: [
           {
@@ -78,7 +79,7 @@ function Single() {
 
   function handleFormSubmit(e) {
     e.preventDefault();
-    putPayment() 
+    putSinglelottory() ;
     if (number !== "" && draw !== "" && pack !== "" && drawDate !== "") {
       setValid(true);
       setLottery([
@@ -109,14 +110,16 @@ function Single() {
     setLottery(removeItem);
   }
 
-  console.log(lottery);
+  // console.log("lotto",lottery);
   return (
     <div>
       {/* <h1>{drawDate}</h1> */}
-      <div class="grid justify-items-center ">
-        <div class="flex justify-center bg-[#FFF8E6]  m-2 p-3 w-2/6 shadow-md rounded-md xl:w-[535px] lg:w-[430px] sm:w-[400px]  min-w-[380px]">
+      <div class="grid justify-items-center w-full">
+       
+        {/* <div class="flex justify-center bg-[#FFF8E6]  m-2 mt-2 p-3 w-2/6 shadow-md rounded-md xl:w-[535px] lg:w-[430px] sm:w-[400px]  min-w-[380px]"> */}
+        <div class="flex justify-center bg-[#FFF8E6]  m-2 mt-2 p-3 shadow-md rounded-md w-[90%]">
           <form onSubmit={handleFormSubmit}>
-            <div class="flex justify-between space-x-2 text-xs xl:flex-row  sm:flex-col ">
+            <div class="flex justify-between space-x-2 text-xs 2xl:flex-row flex-col">
               <div class="flex justify-between space-x-2 ">
                 <div>
                   <div class="flex justify-between">
@@ -192,7 +195,7 @@ function Single() {
         )}
 
         <div class="overflow-x-auto xl:h-[380px] sm:h-[300px]">
-          {lottery.map((lotto) => (
+        {lottery.map((lotto) => (
             <div
               class="bg-white flex justify-center  m-2 p-3 w-2/6 shadow-md rounded-md xl:w-[530px] lg:w-[430px] sm:w-[400px]  min-w-[380px]"
               key={lotto.id}
@@ -232,12 +235,12 @@ function Single() {
                   </div>
                 </div>
 
-                <button
+                {/* <button
                   onClick={() => handleDelete(lotto.id)}
                   class="font-prompt text-sm rounded-md p-2 border border-[#ee6657] text-[#ee6657] hover:bg-[#ff2020] hover:text-white"
                 >
                   ลบ
-                </button>
+                </button> */}
               </div>
             </div>
           ))}

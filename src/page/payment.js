@@ -9,26 +9,27 @@ import './payment.css';
 import { global_url_token } from "./global_url_token";
 
 const Payment = (card_props)=>{
-    // const [temp_id,temp_li] = useContext(OrderID_API)
-    const temp_id = 145
-    const temp_li = [{Amount: 1,
-        Draw: "20",
-        DrawDate: "16 เมษายน 2565",
-        Money: "80",
-        Number: "745245",
-        PackAmount: "-",
-        Storename: "ใจดี",
-        pack: "N"
-    }]
 
-    const [newCardData, setNewCartData] = useState([])
+    const [temp_id, totalCost] = useContext(OrderID_API)
+    console.log("temp_id",temp_id)
+    console.log("totalCost",totalCost)
 
+    // const temp_id = 145
+    // const temp_li = [{Amount: 1,
+    //     Draw: "20",
+    //     DrawDate: "16 เมษายน 2565",
+    //     Money: "80",
+    //     Number: "745245",
+    //     PackAmount: "-",
+    //     Storename: "ใจดี",
+    //     pack: "N"
+    // }]
     const [images, setImages] = useState([]);
 	const [imageURLs, setImagwURLs] = useState([]);
     // let cost = 0
 
     const navigate  = useNavigate();
-    let orderIDpath = ""
+    // let orderIDpath = ""
 
     useEffect(()=>{
         if (images.length < 1)return;
@@ -37,19 +38,19 @@ const Payment = (card_props)=>{
         setImagwURLs(newImageURL);
     },[images])
 
-    const totalCost = ()=>{
-        console.log("check item")
-        // const sum = item.reduce((total, element)=> (element.Pack_Flag === "N" ? total+=Number(element.Amount) : total+=((Number(element.Amount))*Number(element.PackAmount))),0) * 80
-        let sum = 0
-        for (let i = 0; i<temp_li.length; i++){
-            sum += Number(temp_li[i]["Money"])
-            console.log("Sum", i,":",sum,temp_li,temp_li[i],temp_li[i]["Money"])
-        }
-        console.log("temp_li[0]", temp_li[0])
-        console.log("temp_li[0][Money]", temp_li[0]["Money"])
-        console.log("check Total Sum", sum)
-        return sum
-    }
+    // const totalCost = ()=>{
+    //     console.log("check item")
+    //     // const sum = item.reduce((total, element)=> (element.Pack_Flag === "N" ? total+=Number(element.Amount) : total+=((Number(element.Amount))*Number(element.PackAmount))),0) * 80
+    //     let sum = 0
+    //     for (let i = 0; i<temp_li.length; i++){
+    //         sum += Number(temp_li[i]["Money"])
+    //         console.log("Sum", i,":",sum,temp_li,temp_li[i],temp_li[i]["Money"])
+    //     }
+    //     console.log("temp_li[0]", temp_li[0])
+    //     console.log("temp_li[0][Money]", temp_li[0]["Money"])
+    //     console.log("check Total Sum", sum)
+    //     return sum
+    // }
 
     function onImageChange(e){
         e.preventDefault()
@@ -57,6 +58,7 @@ const Payment = (card_props)=>{
     }
 
     const toPaymentSuccess = useCallback(() => navigate('/paymentsuccess', {replace: true}), [navigate]);
+    const toHome = useCallback(() => navigate("/home", {replace: true}), [navigate]);
 
     const sendImageURL = (event) =>{
         event.preventDefault()
@@ -68,7 +70,6 @@ const Payment = (card_props)=>{
             })
         .then(function (response) {
             console.log("temp_id", temp_id)
-            console.log("temp_li", temp_li)
             console.log("response payment img",response)
             console.log("check data sending",{
                 token:global_url_token.customer_token,
@@ -76,20 +77,10 @@ const Payment = (card_props)=>{
                 OrderID:String(temp_id)
             })
             if(response.data.status === "200OK"){
-                // isResponse = true
-                orderIDpath = response.data.orderID
-                console.log("orderIDpath 200OK", orderIDpath)
-                // console.log("isResponse canpay 200OK", isResponse)
-                card_props.order_ID([response.data.orderID, newCardData])
-                toPaymentSuccess()
-            }
-            else if(response.data.status === "200CE"){
-                // isResponse = false
-                // console.log("isResponse canpay 200CE", )
                 toPaymentSuccess()
             }
             else{
-                toPaymentSuccess()
+                toHome()
             }
         })
         .catch(function (error) {
@@ -104,6 +95,7 @@ const Payment = (card_props)=>{
 
     return (
         <div className="font-prompt justify-center h-screen" style={{backgroundColor:"#FFE5A3"}}>
+            <div className="h-16"/>
             <div className="font-prompt flex justify-center" style={{backgroundColor:"#FFE5A3"}}>
                 <div class="flex flex-col p-8 m-8 bg-white rounded-xl shadow-xl min-w-[44.25%] w-[97%] 2xl:w-[44.25%] xl:w-[53.1%] lg:w-[66.375%] md:w-[88.5%] sm:w-[95%] xs:w-[97%]" style={{}}>
                     <div>
@@ -111,7 +103,7 @@ const Payment = (card_props)=>{
                         <div className="justify-left" style={{marginTop:"0vw"}}></div>
                         <div style={{height:"1vw"}}></div>
                         <div style={{marginBottom:"0vw",paddingTop:"1vw",paddingBottom:"0.8vw", borderTopWidth:"0.1vw", borderColor:"#999191"}}>
-                            <p style={{display:"flex", justifyContent:"space-between", paddingBottom:"0vw", color:"#000000"}}>ยอดเงินที่ต้องชำระ<span class="text-2xl font-semibold" style={{color:"#E54E3D"}}>{totalCost() + 40}&ensp; บาท</span></p>
+                            <p style={{display:"flex", justifyContent:"space-between", paddingBottom:"0vw", color:"#000000"}}>ยอดเงินที่ต้องชำระ<span class="text-2xl font-semibold" style={{color:"#E54E3D"}}>{totalCost}&ensp; บาท</span></p>
                         </div>
                         <div className="flex" style={{justifyContent:"center", marginBottom:"1vw",paddingTop:"1vw",paddingBottom:"0.8vw", borderTopWidth:"0.1vw", borderColor:"#999191", justifyItems:"center"}}>
                             <img style={{maxWidth:"70%",justifySelf:"center"}} src={Logo} />
@@ -125,11 +117,9 @@ const Payment = (card_props)=>{
                     </div>
                     <div>
                         <form>
-                            {/* <Link to="/" className={images.length < 1 ? "disableLink" : "enableLink"} state= {paymentInfo.state}> */}
-                                <button id="goToPaymentMethod" className="flex goToPaymentMethod" disabled={images.length < 1 ? true: false} onClick={sendImageURL}>
-                                    <p>ดำเนินการชำระเงิน</p>
-                                </button>
-                            {/* </Link> */}
+                            <button id="goToPaymentMethod" className="flex goToPaymentMethod" disabled={images.length < 1 ? true: false} onClick={sendImageURL}>
+                                <p>ดำเนินการชำระเงิน</p>
+                            </button>
                         </form>
                     </div>
                 </div>

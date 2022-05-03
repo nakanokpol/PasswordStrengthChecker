@@ -1,7 +1,6 @@
 import React from "react";
-import { global_url_token } from "../page/global_url_token";
 
-function Checkorder() {
+function Checkorder({checkTran}) {
   const Testdata = [
     {
       OID: "27",
@@ -61,12 +60,12 @@ function Checkorder() {
       <h1 class="mb-5  text-2xl font-semibold	 ">ประวัติการสั่งซื้อ</h1>
 
       <div class=" flex justify-center items-center bg-white  font-prompt">
-        <div class="overflow-x-auto  xl:w-[560px] md:w-[450px] sm:w-[400px]">
+        <div class="overflow-x-auto w-full ">
           <table class="w-full ">
             <thead class=" border-b border-t border-[#E54E3D]">
               <tr>
-                <th class="w-32 p-2 text-sm tracking-wider font-medium text-center">
-                  เลขคำสั่งซื้อ
+                <th class="w-60  text-sm tracking-wider font-medium text-center">
+                  คำสั่งซื้อที่
                 </th>
                 <th class=" p-2 text-sm tracking-wider font-medium text-center">
                   รายละเอียดสินค้า
@@ -83,7 +82,7 @@ function Checkorder() {
                 </th>
               </tr>
             </thead>
-            {Testdata.map((p) => (
+            {checkTran.map((p) => (
               <tbody class="divide-y border-b border-t border-[#E54E3D]">
                 <tr class=" border-b  border-[#E54E3D]">
                   <td class="p-3 text-sm font-light whitespace-nowrap text-center">
@@ -117,8 +116,9 @@ function Checkorder() {
                     </tr>
                   ))}
 
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    เสร็จสิ้น
+                  <td class={`p-3 text-sm font-light whitespace-nowrap text-center ${p.Status=="Completed" ? "text-green-500" : "text-gray-500"}`}>
+                    
+                    {p.Status}
                   </td>
                 </tr>
               </tbody>
