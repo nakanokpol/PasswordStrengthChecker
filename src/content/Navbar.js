@@ -37,7 +37,7 @@ const Navbar = ({toggle}) => {
         <Link class="p-4 hover:text-[#E54E3D]" to="/home">
           หน้าหลัก
         </Link>
-        <Link class="p-4 hover:text-[#E54E3D] " to="/cart">
+        <Link class="p-4 hover:text-[#E54E3D]" to="/cart">
           ตะกร้าสินค้า
         </Link>
         {/* <Link className="p-4 hover:text-[#E54E3D]" to="/orders">
@@ -50,14 +50,11 @@ const Navbar = ({toggle}) => {
           บัญชีผู้ใช้
         </Link>
         <span class="border-l-2 border-red-200"/>
-        <Link class="p-4 hover:text-[#E54E3D]" to="/login">
-          เข้าสู่ระบบ
-        </Link>
         <Link
-        to="/register"
-        class="p-10 py-1 px-1 border-2 border-[#E54E3D] rounded text-[#E54E3D] hover:bg-[#E54E3D] hover:text-white transition duration-300"
-      > 
-      สมัครเป็นสมาชิก
+          to="/register"
+          class="p-10 py-1 px-1 ml-4 border-2 border-[#E54E3D] rounded text-[#E54E3D] hover:bg-[#E54E3D] hover:text-white transition duration-300"
+        > 
+          ออกจากระบบ
           </Link>
         
       </div>

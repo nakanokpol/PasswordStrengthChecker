@@ -144,18 +144,14 @@ const Register = () => {
       });
   };
 
-  const toAccountMs = useCallback(
-    () => navigate("/home", { replace: true }),
-    [navigate]
-  );
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(defaultValues));
     setIsSubmit(true);
-    Register();
-
-    toAccountMs();
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      
+      Register();
+    }console.log(defaultValues);
   };
 
   useEffect(() => {
@@ -167,14 +163,6 @@ const Register = () => {
   function onImageChange(e) {
     setImages([...e.target.files]);
   }
-
-  useEffect(() => {
-    console.log(formErrors);
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      // setRole(addRole);
-      console.log(defaultValues);
-    }
-  }, []);
 
   const validate = (values) => {
     console.log(values);
@@ -297,7 +285,7 @@ const Register = () => {
 
   return (
     <div style={{overflow:"hidden"}}>
-      <div className="h-16"/>
+      <div className="h-16 bg-[#FFE5A3]"/>
       <div className="h-full flex justify-center  bg-[#FFE5A3] font-prompt">
         <div>
           <div className="mt-6 text-3xl font-bold text-center text-[#E54E3D]">
@@ -309,9 +297,6 @@ const Register = () => {
           <div className="flex flex-col p-8 m-8 bg-white w-[600px] sm:min-w-[400px] min-w-[300px]  rounded-xl shadow-xl">
             <h1 className="text-xl font-bold mb-2">สร้างบัญชีของคุณ</h1>
             <h2 className="text-lg mb-4 text-[#E54E3D]">ข้อมูลส่วนตัว</h2>
-            {/* {Object.keys(formErrors).length === 0 && isSubmit ? (
-            toAccountMs()
-          ) : ( */}
             <form onSubmit={handleSubmit}>
               <label
                 className="block text-gray-darker text-md font-bold mb-2"
@@ -652,10 +637,10 @@ const Register = () => {
             </form>
             {/* )} */}
 
-            <Link to="/home">
+            <Link to= "/login">
               <div className="mb-7">
                 <button className="w-full p-10 py-2 px-4 border-2 border-[#E54E3D] rounded text-[#E54E3D] hover:bg-[#E54E3D] hover:text-white transition duration-300">
-                  ยกเลิก และ กลับสู่หน้าหลัก
+                  ยกเลิก
                 </button>
               </div>
             </Link>

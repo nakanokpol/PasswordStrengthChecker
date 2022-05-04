@@ -14,7 +14,6 @@
     font-size:1.2rem;
 }
 .no-stock{
-    color: rgba(0,0,0,0);
-    /* font-size:1.2rem; */
+    visibility: hidden;
     content: "";
 }

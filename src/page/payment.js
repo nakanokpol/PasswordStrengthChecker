@@ -10,47 +10,21 @@ import { global_url_token } from "./global_url_token";
 
 const Payment = (card_props)=>{
 
-    const [temp_id, totalCost] = useContext(OrderID_API)
+    const [temp_id="", totalCost=0] = useContext(OrderID_API)
     console.log("temp_id",temp_id)
     console.log("totalCost",totalCost)
 
-    // const temp_id = 145
-    // const temp_li = [{Amount: 1,
-    //     Draw: "20",
-    //     DrawDate: "16 เมษายน 2565",
-    //     Money: "80",
-    //     Number: "745245",
-    //     PackAmount: "-",
-    //     Storename: "ใจดี",
-    //     pack: "N"
-    // }]
     const [images, setImages] = useState([]);
-	const [imageURLs, setImagwURLs] = useState([]);
-    // let cost = 0
+	const [imageURLs, setImagwURLs] = useState([])
 
     const navigate  = useNavigate();
-    // let orderIDpath = ""
 
     useEffect(()=>{
         if (images.length < 1)return;
         const newImageURL = [];
-        images.forEach((image)=> newImageURL.push(URL.createObjectURL(image)))//////
+        images.forEach((image)=> newImageURL.push(URL.createObjectURL(image)))
         setImagwURLs(newImageURL);
     },[images])
-
-    // const totalCost = ()=>{
-    //     console.log("check item")
-    //     // const sum = item.reduce((total, element)=> (element.Pack_Flag === "N" ? total+=Number(element.Amount) : total+=((Number(element.Amount))*Number(element.PackAmount))),0) * 80
-    //     let sum = 0
-    //     for (let i = 0; i<temp_li.length; i++){
-    //         sum += Number(temp_li[i]["Money"])
-    //         console.log("Sum", i,":",sum,temp_li,temp_li[i],temp_li[i]["Money"])
-    //     }
-    //     console.log("temp_li[0]", temp_li[0])
-    //     console.log("temp_li[0][Money]", temp_li[0]["Money"])
-    //     console.log("check Total Sum", sum)
-    //     return sum
-    // }
 
     function onImageChange(e){
         e.preventDefault()
@@ -86,7 +60,7 @@ const Payment = (card_props)=>{
         .catch(function (error) {
             console.log(error);
         });
-        console.log("check data sending7777",{
+        console.log("check data sending",{
             token:global_url_token.customer_token,
             URLSlip:imageURLs[0],
             OrderID:String(temp_id)
